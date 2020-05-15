@@ -36,7 +36,7 @@ class Product(models.Model):
     description = models.TextField(blank=True)
     meta_description = models.TextField(blank=True)
 
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.IntegerField(max_length=10)
     stock = models.PositiveIntegerField()
 
     # 상품 노출 여부와 상품 주문 가능 여부
