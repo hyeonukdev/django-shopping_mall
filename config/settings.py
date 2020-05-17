@@ -28,7 +28,7 @@ SECRET_KEY = "m^r_fn-n83@ed006(#f#nm_vf*+s5b0vi2wf7k)(p24^04q&8u"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.naver",
+    "cart",
 ]
 
 MIDDLEWARE = [
@@ -150,3 +151,5 @@ AUTENTICATOION_BACKENDS = (
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = "/"
+
+CART_ID = "cart_in_session"
