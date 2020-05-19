@@ -116,6 +116,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+CART_ID = "cart_in_session"
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -151,5 +153,3 @@ AUTENTICATOION_BACKENDS = (
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = "/"
-
-CART_ID = "cart_in_session"

@@ -2,19 +2,19 @@
 {% load static %}
 
 {% block title %}
-    Shopping cart
+    카트
 {% endblock %}
 
 {% block content %}
     <table class="table table-striped">
         <thead>
             <tr>
-                <th scope="col">Image</th>
-                <th scope="col">Product</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Remove</th>
-                <th scope="col">Unit price</th>
-                <th scope="col">Price</th>
+                <th scope="col">이미지</th>
+                <th scope="col">상품명</th>
+                <th scope="col">수량</th>
+                <th scope="col">제거</th>
+                <th scope="col">개당 가격</th>
+                <th scope="col">제품 가격</th>
             </tr>
         </thead>
         <tbody>
@@ -31,26 +31,26 @@
                     <form action="{% url "cart:product_add" product.id %}" method="post">
                         {{ item.quantity_form.quantity }}
                         {{ item.quantity_form.is_update }}
-                        <input type="submit" class="btn btn-primary" value="Update">
+                        <input type="submit" class="btn btn-primary" value="반영하기">
                         {% csrf_token %}
                     </form>
                 </td>
-                <td><a href="{% url "cart:product_remove" product.id %}">Remove</a></td>
-                <td class="num">${{ item.price }}</td>
-                <td class="num">${{ item.total_price }}</td>
+                <td><a href="{% url "cart:product_remove" product.id %}">제거</a></td>
+                <td class="num">₩{{ item.price }}</td>
+                <td class="num">₩{{ item.total_price }}</td>
             </tr>
             {% endwith %}
         {% endfor %}
 
         <tr class="total">
-            <td>Total</td>
+            <td>총액</td>
             <td colspan="4"></td>
-            <td class="num">${{ cart.get_total_price|floatformat:"2" }}</td>
+            <td class="num">₩{{ cart.get_product_total}}</td>
         </tr>
         </tbody>
     </table>
 
     <p class="text-right">
-        <a href='{% url "shop:product_all" %}' class="btn btn-secondary">Continue shopping</a>
+        <a href='{% url "shop:product_all" %}' class="btn btn-secondary">계속 쇼핑하기</a>
     </p>
 {% endblock %}

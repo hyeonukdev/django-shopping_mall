@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
-{% block title %}Category Page{% endblock %}
+{% block title %}쇼핑몰{% endblock %}
 {% block content %}
 
 
     <div class="row">
         <div class="col-2">
             <div class="list-group">
-                <a href="/" class="list-group-item {% if not current_category %}active{% endif %}">All</a>
+                <a href="/" class="list-group-item {% if not current_category %}active{% endif %}">카테고리</a>
                 {% for c in categories %}
                     <a href="{{c.get_absolute_url}}" class="list-group-item {% if current_category.slug == c.slug %}active{% endif %}">{{c.name}}</a>
                 {% endfor %}
@@ -16,7 +16,7 @@
 
         <div class="col">
             <div class="alert alert-info" role="alert">
-              {% if current_category %}{{current_category.name}}{% else %}All Products{% endif %}
+              {% if current_category %}{{current_category.name}}{% else %}모든 물품{% endif %}
             </div>
             <div class="row">
             {% for product in products %}
@@ -27,7 +27,7 @@
                       <div class="card-body">
                         <h5 class="card-title">{{product.name}}</h5>
                         <p class="card-text">{{product.description}} <span class="badge badge-secondary">₩{{product.price}}</span></p>
-                        <a href="{{product.get_absolute_url}}" class="btn btn-primary">View Detail</a>
+                        <a href="{{product.get_absolute_url}}" class="btn btn-primary">자세히보기</a>
                       </div>
                     </div>
                 </div>
