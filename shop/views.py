@@ -21,6 +21,7 @@ def product_in_category(request, category_slug=None):
             "products": products,
         },
     )
+    
 
 
 from cart.forms import AddProductForm
