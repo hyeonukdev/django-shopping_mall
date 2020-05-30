@@ -6,10 +6,10 @@
 <div class="container">
     <div class="row">
         <div class="col-4">
-
+            <img src="{{product.image.url}}" width="100%"> <br>
             <form>
-                <input onclick="analyze('http://59.26.44.137:8001{{product.image.url}}')" value="ANALYZE" type="image"
-                    class="floating_element" src="{{product.image.url}}" width="100%">
+                <input onclick="analyze('http://59.26.44.137:8001{{product.image.url}}')" value="ANALYZE" type="button"
+                    class="floating_element">
             </form>
             <br>
             <textarea id="result" rows="3" class="floating_element" cols="14" readonly>RESULT</textarea>
