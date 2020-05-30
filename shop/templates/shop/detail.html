@@ -1,113 +1,99 @@
-{% extends 'base.html' %} {% block title %}상세페이지{% endblock %} {% block
-content %}
+{% extends 'base.html' %}
+{% block title %}상세페이지{% endblock %}
+{% block content %}
+
 
 <div class="container">
-  <div class="row">
-    <div class="col-4">
-      <form>
-        <input
-          onclick="analyze('http://59.26.44.137:8001{{product.image.url}}')"
-          value="ANALYZE"
-          type="image"
-          class="floating_element"
-          src="{{product.image.url}}"
-          width="100%"
-        />
-      </form>
-      <br />
-      <textarea
-        id="result"
-        rows="3"
-        class="floating_element"
-        cols="14"
-        readonly
-      >
-RESULT</textarea
-      >
-    </div>
-    <div class="col">
-      <h1 class="display-6">{{product.name}}</h1>
+    <div class="row">
+        <div class="col-4">
 
-      <p><span class="badge badge-secondary">가격</span> {{product.price}}</p>
-      <form action="{% url 'cart:product_add' product.id %}" method="post">
-        {{add_to_cart}} {% csrf_token %}
-        <input
-          type="submit"
-          class="btn btn-primary btn-sm"
-          value="카트에 넣기"
-        />
-      </form>
-      <br />
-      <h5>
-        <span class="badge badge-secondary">상세설명</span
-        >{{product.description|linebreaks}}
-      </h5>
-    </div>
-  </div>
-  <div class="server">
-    <h2>서버테스트</h2>
-    <form>
-      <!-- 서버로 메시지를 보낼 텍스트 박스 -->
-      <input id="textMessage" type="text" />
-      <!-- 전송 버튼 -->
-      <input onclick="sendMessage()" value="Send" type="button" />
-      <!-- 접속 종료 버튼 -->
-      <input onclick="disconnect()" value="Disconnect" type="button" />
-    </form>
+            <form>
+                <input onclick="analyze('http://59.26.44.137:8001{{product.image.url}}')" value="ANALYZE" type="image"
+                    class="floating_element" src="{{product.image.url}}" width="100%">
+            </form>
+            <br>
+            <textarea id="result" rows="3" class="floating_element" cols="14" readonly>RESULT</textarea>
+        </div>
+        <div class="col">
+            <h1 class="display-6">{{product.name}}</h1>
 
-    <br />
-    <!-- 출력 area -->
-    <textarea id="messageTextArea" rows="10" cols="50"></textarea>
-  </div>
+            <p><span class="badge badge-secondary">가격</span> {{product.price}}</p>
+            <form action="{% url 'cart:product_add' product.id %}" method="post">
+                {{add_to_cart}}
+                {% csrf_token %}
+                <input type="submit" class="btn btn-primary btn-sm" value="카트에 넣기">
+            </form>
+            <br>
+            <h5><span class="badge badge-secondary">상세설명</span>{{product.description|linebreaks}}</h5>
+        </div>
+    </div>
+    <div class="server">
+        <h2>서버테스트</h2>
+        <form>
+            <!-- 서버로 메시지를 보낼 텍스트 박스 -->
+            <input id="textMessage" type="text">
+            <!-- 전송 버튼 -->
+            <input onclick="sendMessage()" value="Send" type="button">
+            <!-- 접속 종료 버튼 -->
+            <input onclick="disconnect()" value="Disconnect" type="button">
+        </form>
+
+        <br />
+        <!-- 출력 area -->
+        <textarea id="messageTextArea" rows="10" cols="50"></textarea>
+    </div>
+
 </div>
 
+
 <script type="text/javascript">
-  // 웹 서버를 접속한다.
-  var webSocket = new WebSocket("ws://192.168.0.12:9998");
+    // 웹 서버를 접속한다.
+    var webSocket = new WebSocket("ws://192.168.0.12:9998");
 
-  // 웹 서버와의 통신을 주고 받은 결과를 출력할 오브젝트를 가져옵니다.
-  var messageTextArea = document.getElementById("messageTextArea");
-  var result = document.getElementById("result");
+    // 웹 서버와의 통신을 주고 받은 결과를 출력할 오브젝트를 가져옵니다.
+    var messageTextArea = document.getElementById("messageTextArea");
+    var result = document.getElementById("result");
 
-  // 소켓 접속이 되면 호출되는 함수
-  webSocket.onopen = function (message) {
-    messageTextArea.value += "Server connect...\n";
-  };
+    // 소켓 접속이 되면 호출되는 함수
+    webSocket.onopen = function (message) {
+        messageTextArea.value += "Server connect...\n";
+    };
 
-  // 소켓 접속이 끝나면 호출되는 함수
-  webSocket.onclose = function (message) {
-    messageTextArea.value += "Server Disconnect...\n";
-  };
+    // 소켓 접속이 끝나면 호출되는 함수
+    webSocket.onclose = function (message) {
+        messageTextArea.value += "Server Disconnect...\n";
+    };
 
-  // 소켓 통신 중에 에러가 발생되면 호출되는 함수
-  webSocket.onerror = function (message) {
-    messageTextArea.value += "error...\n";
-  };
+    // 소켓 통신 중에 에러가 발생되면 호출되는 함수
+    webSocket.onerror = function (message) {
+        messageTextArea.value += "error...\n";
+    };
 
-  // 소켓 서버로 부터 메시지가 오면 호출되는 함수.
-  webSocket.onmessage = function (message) {
-    // 출력 area에 메시지를 표시한다.
-    messageTextArea.value += "Recieve From Server => " + message.data + "\n";
-    result.value = message.data;
-  };
+    // 소켓 서버로 부터 메시지가 오면 호출되는 함수.
+    webSocket.onmessage = function (message) {
+        // 출력 area에 메시지를 표시한다.
+        messageTextArea.value += "Recieve From Server => " + message.data + "\n";
+        result.value = message.data;
 
-  // 서버로 메시지를 전송하는 함수
-  function sendMessage() {
-    var message = document.getElementById("textMessage");
-    messageTextArea.value += "Send to Server => " + message.value + "\n";
-    //웹소켓으로 textMessage객체의 값을 보낸다.
-    webSocket.send(message.value);
-    //textMessage객체의 값 초기화
-    message.value = "";
-  }
+    };
 
-  function disconnect() {
-    webSocket.close();
-  }
+    // 서버로 메시지를 전송하는 함수
+    function sendMessage() {
+        var message = document.getElementById("textMessage");
+        messageTextArea.value += "Send to Server => " + message.value + "\n";
+        //웹소켓으로 textMessage객체의 값을 보낸다.
+        webSocket.send(message.value);
+        //textMessage객체의 값 초기화
+        message.value = "";
+    }
 
-  // request image analyzing
-  function analyze(url) {
-    webSocket.send(url);
-  }
+    function disconnect() {
+        webSocket.close();
+    }
+
+    // request image analyzing
+    function analyze(url) {
+        webSocket.send(url);
+    }
 </script>
 {% endblock %}
