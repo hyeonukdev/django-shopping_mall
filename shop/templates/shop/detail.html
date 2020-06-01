@@ -12,7 +12,7 @@
                     class="floating_element">
             </form>
             <br>
-            <textarea id="messageTextArea" rows="3" class="floating_element" cols="14" readonly>분석대기중...</textarea>
+            <textarea id="messageTextArea" rows="3" class="floating_element" cols="14" readonly>...</textarea>
         </div>
         <div class="col">
             <h1 class="display-6">{{product.name}}</h1>
@@ -40,17 +40,17 @@
 
     // 소켓 접속이 되면 호출되는 함수
     webSocket.onopen = function (message) {
-        messageTextArea.value += "Server connect...\n";
+        messageTextArea.value = "Server connect...\n";
     };
 
     // 소켓 접속이 끝나면 호출되는 함수
     webSocket.onclose = function (message) {
-        messageTextArea.value += "Server Disconnect...\n";
+        messageTextArea.value = "Server Disconnect...\n";
     };
 
     // 소켓 통신 중에 에러가 발생되면 호출되는 함수
     webSocket.onerror = function (message) {
-        messageTextArea.value += "error...\n";
+        messageTextArea.value = "error...\n";
     };
 
     // 소켓 서버로 부터 메시지가 오면 호출되는 함수.
