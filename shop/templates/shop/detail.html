@@ -8,11 +8,11 @@
         <div class="col-4">
             <img src="{{product.image.url}}" width="100%"> <br>
             <form>
-                <input onclick="analyze('http://59.26.44.137:8001{{product.image.url}}')" value="ANALYZE" type="button"
+                <input onclick="analyze('http://59.26.44.137:8001{{product.image.url}}')" value="이미지분석"" type=" button"
                     class="floating_element">
             </form>
             <br>
-            <textarea id="result" rows="3" class="floating_element" cols="14" readonly>RESULT</textarea>
+            <textarea id="messageTextArea" rows="3" class="floating_element" cols="14" readonly>분석대기중...</textarea>
         </div>
         <div class="col">
             <h1 class="display-6">{{product.name}}</h1>
@@ -27,21 +27,6 @@
             <h5><span class="badge badge-secondary">상세설명</span>{{product.description|linebreaks}}</h5>
         </div>
     </div>
-    <div class="server">
-        <h2>서버테스트</h2>
-        <form>
-            <!-- 서버로 메시지를 보낼 텍스트 박스 -->
-            <input id="textMessage" type="text">
-            <!-- 전송 버튼 -->
-            <input onclick="sendMessage()" value="Send" type="button">
-            <!-- 접속 종료 버튼 -->
-            <input onclick="disconnect()" value="Disconnect" type="button">
-        </form>
-
-        <br />
-        <!-- 출력 area -->
-        <textarea id="messageTextArea" rows="10" cols="50"></textarea>
-    </div>
 
 </div>
 
@@ -52,7 +37,6 @@
 
     // 웹 서버와의 통신을 주고 받은 결과를 출력할 오브젝트를 가져옵니다.
     var messageTextArea = document.getElementById("messageTextArea");
-    var result = document.getElementById("result");
 
     // 소켓 접속이 되면 호출되는 함수
     webSocket.onopen = function (message) {
@@ -72,8 +56,7 @@
     // 소켓 서버로 부터 메시지가 오면 호출되는 함수.
     webSocket.onmessage = function (message) {
         // 출력 area에 메시지를 표시한다.
-        messageTextArea.value += "Recieve From Server => " + message.data + "\n";
-        result.value = message.data;
+        messageTextArea.value = message.data + "\n";
 
     };
 
