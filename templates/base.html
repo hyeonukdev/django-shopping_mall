@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +18,7 @@
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
   {% block script %}
+  <script src="{% static 'js/tts.js' %}"></script>
   {% endblock %}
 
   {% block style %}
@@ -58,7 +60,11 @@
     {% block content %}
     {% endblock %}
   </div>
-  <script>
+  </div>
+
+
+  <!-- TTS -->
+  <script type="text/javascript">
     var voices = [];
 
     function setVoiceList() {
@@ -74,14 +80,17 @@
         alert("지원불가");
         return;
       }
+
       var lang = 'ko-KR';
       var utterThis = new SpeechSynthesisUtterance(txt);
+
       utterThis.onend = function (event) {
         console.log('end');
       };
       utterThis.onerror = function (event) {
         console.log('error', event);
       };
+
       var voiceFound = false;
       for (var i = 0; i < voices.length; i++) {
         if (voices[i].lang.indexOf(lang) >= 0 || voices[i].lang.indexOf(lang.replace('-', '_')) >= 0) {
@@ -89,6 +98,7 @@
           voiceFound = true;
         }
       }
+
       if (!voiceFound) {
         alert('voice not found');
         return;
@@ -98,14 +108,17 @@
       utterThis.rate = 1;
       window.speechSynthesis.speak(utterThis);
     }
+
     document.addEventListener("keydown", function (e) {
-      if (e.keyCode == 83) {
-        var tts = e.target;
-        speech(tts.value);
+      if (e.keyCode == 17ㄴ) {
+        var tts = e.target.innerText;
+        alert(tts);
+        speech(tts);
       }
 
-    }); <
-    /body>
+    });
+  </script>
 
-    <
-    /html>
+</body>
+
+</html>
