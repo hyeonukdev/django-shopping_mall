@@ -111,6 +111,10 @@
 
     document.addEventListener("keydown", function (e) {
       if (e.keyCode == 17) {
+        var attr = e.target.nodeName;
+        if (attr == 'IMG') {
+          alert('이미지');
+        }
         var tts = e.target.innerText;
         //alert(tts);
         speech(tts);
@@ -207,7 +211,7 @@
     var shift_cnt = 0; // 축소
 
     document.onkeydown = function (e) {
-      if (e.which == 18) {
+      if (e.which == 107) {
         ctrl_cnt += 1;
       }
       if (ctrl_cnt == 2) {
@@ -215,7 +219,7 @@
         ctrl_cnt = 0;
       }
 
-      if (e.which == 16) {
+      if (e.which == 109) {
         shift_cnt += 1;
       }
       if (shift_cnt == 2) {
