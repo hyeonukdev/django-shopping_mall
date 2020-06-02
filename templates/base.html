@@ -110,13 +110,119 @@
     }
 
     document.addEventListener("keydown", function (e) {
-      if (e.keyCode == 17ㄴ) {
+      if (e.keyCode == 17 ㄴ) {
         var tts = e.target.innerText;
         alert(tts);
         speech(tts);
       }
 
     });
+  </script>
+
+  <!-- Zoom -->
+  <script type="text/javascript">
+    var Browser = {
+      a: navigator.userAgent.toLowerCase()
+    }
+    Browser = {
+      ie: /*@cc_on true || @*/ false,
+      ie6: Browser.a.indexOf('msie 6') != -1,
+      ie7: Browser.a.indexOf('msie 7') != -1,
+      ie8: Browser.a.indexOf('msie 8') != -1,
+      opera: !!window.opera,
+      safari: Browser.a.indexOf('safari') != -1,
+      safari3: Browser.a.indexOf('applewebkit/5') != -1,
+      mac: Browser.a.indexOf('mac') != -1,
+      chrome: Browser.a.indexOf('chrome') != -1,
+      firefox: Browser.a.indexOf('firefox') != -1
+    }
+
+    // 확대/축소 기능 -------------------------------------
+    var nowZoom = 100;
+    var maxZoom = 500;
+    var minZoom = 80;
+    var step = 50;
+
+    var jsBrowseSizeUp = function () {
+      if (Browser.chrome) {
+        if (nowZoom < maxZoom) {
+          nowZoom += step;
+          document.body.style.zoom = nowZoom + "%";
+        } else {
+          alert('최대 확대입니다.');
+        }
+      }
+      // else if( Browser.opera ) { 
+      // alert('오페라는 화면크기 기능을 지원하지 않습니다.\n브라우저 내의 확대/축소 기능을 이용하시기 바랍니다.'); 
+      // } 
+      // else if( Browser.safari || Browser.safari3 || Browser.mac  ) { 
+      // alert('사파리, 맥은 화면크기 기능을 지원하지 않습니다.\n브라우저 내의 확대/축소 기능을 이용하시기 바랍니다.'); 
+      // } 
+      // else if( Browser.firefox ) { 
+      // alert('파이어폭스는 화면크기 기능을 지원하지 않습니다.\n브라우저 내의 확대/축소 기능을 이용하시기 바랍니다.'); 
+      // } 
+      else {
+        if (nowZoom < maxZoom) {
+          nowZoom += step;
+          document.body.style.position = "relative";
+          document.body.style.zoom = nowZoom + "%";
+        } else {
+          alert('최대 확대입니다.');
+        }
+      }
+    };
+
+    var jsBrowseSizeDown = function () {
+
+      if (Browser.chrome) {
+        if (nowZoom > minZoom) {
+          nowZoom -= step;
+          document.body.style.zoom = nowZoom + "%";
+        } else {
+          alert('최대 축소입니다.');
+        }
+      }
+      // else if( Browser.opera ) { 
+      // alert('오페라는 화면크기 기능을 지원하지 않습니다.\n브라우저 내의 확대/축소 기능을 이용하시기 바랍니다.'); 
+      // } 
+      // else if( Browser.safari || Browser.safari3 || Browser.mac  ) { 
+      // alert('사파리, 맥은 화면크기 기능을 지원하지 않습니다.\n브라우저 내의 확대/축소 기능을 이용하시기 바랍니다.'); 
+      // } 
+      // else if( Browser.firefox ) { 
+      // alert('파이어폭스는 화면크기 기능을 지원하지 않습니다.\n브라우저 내의 확대/축소 기능을 이용하시기 바랍니다.'); 
+      // } 
+      else {
+        if (nowZoom < maxZoom) {
+          nowZoom -= step;
+          document.body.style.position = "relative";
+          document.body.style.zoom = nowZoom + "%";
+        } else {
+          alert('최대 확대입니다.');
+        }
+      }
+    };
+
+    // 단축키 이벤트 생성 --------------------------
+    var ctrl_cnt = 0; // 확대
+    var shift_cnt = 0; // 축소
+
+    document.onkeydown = function (e) {
+      if (e.which == 18) {
+        ctrl_cnt += 1;
+      }
+      if (ctrl_cnt == 2) {
+        jsBrowseSizeUp();
+        ctrl_cnt = 0;
+      }
+
+      if (e.which == 16) {
+        shift_cnt += 1;
+      }
+      if (shift_cnt == 2) {
+        jsBrowseSizeDown();
+        shift_cnt = 0;
+      }
+    };
   </script>
 
 </body>
