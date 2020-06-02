@@ -18,7 +18,6 @@
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
   {% block script %}
-  <script src="{% static 'js/tts.js' %}"></script>
   {% endblock %}
 
   {% block style %}
@@ -111,13 +110,14 @@
 
     document.addEventListener("keydown", function (e) {
       if (e.keyCode == 17) {
+        var tts = e.target.innerText;
+        speech(tts);
         var attr = e.target.nodeName;
         if (attr == 'IMG') {
           alert('이미지');
+          speech('이미지입니다');
         }
-        var tts = e.target.innerText;
-        //alert(tts);
-        speech(tts);
+
       }
 
     });
