@@ -15,16 +15,16 @@
             <textarea id="messageTextArea" rows="3" class="floating_element" cols="14" readonly>...</textarea>
         </div>
         <div class="col">
-            <h1 class="display-6">{{product.name}}</h1>
+            <h1 class="display-6" tabindex="0">{{product.name}}</h1>
 
-            <p><span class="badge badge-secondary">가격</span> {{product.price}}</p>
+            <p tabindex="0"><span class="badge badge-secondary">가격</span> {{product.price}}</p>
             <form action="{% url 'cart:product_add' product.id %}" method="post">
                 {{add_to_cart}}
                 {% csrf_token %}
                 <input type="submit" class="btn btn-primary btn-sm" value="카트에 넣기">
             </form>
             <br>
-            <h5><span class="badge badge-secondary">상세설명</span>{{product.description|linebreaks}}</h5>
+            <h5 tabindex="0"><span class="badge badge-secondary">상세설명</span>{{product.description|linebreaks}}</h5>
         </div>
     </div>
 
