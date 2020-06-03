@@ -3,41 +3,41 @@
 {% block content %}
 
 
-<div class="row">
-    <div class="col-2">
-        <div class="list-group">
-            <a href="/" class="list-group-item {% if not current_category %}active{% endif %}">카테고리</a>
-            {% for c in categories %}
-            <a href="{{c.get_absolute_url}}"
-                class="list-group-item {% if current_category.slug == c.slug %}active{% endif %}">{{c.name}}</a>
-            {% endfor %}
+    <div class="row">
+        <div class="col-2">
+            <div class="list-group">
+                <a href="/" class="list-group-item {% if not current_category %}active{% endif %}">카테고리</a>
+                {% for c in categories %}
+                    <a href="{{c.get_absolute_url}}" class="list-group-item {% if current_category.slug == c.slug %}active{% endif %}">{{c.name}}</a>
+                {% endfor %}
+            </div>
         </div>
-    </div>
 
 
-    <div class="col">
-        <div class="alert alert-info" role="alert" tabindex="0">
-            {% if current_category %}{{current_category.name}}{% else %}모든 물품{% endif %}
-        </div>
-        <div class="row">
+        <div class="col">
+            <div class="alert alert-info" role="alert">
+              {% if current_category %}{{current_category.name}}{% else %}모든 물품{% endif %}
+            </div>
+            <div class="row">
             {% for product in products %}
 
-            <div class="col-4">
-                <div class="card">
-                    <img class="card-img-top" src="{{product.image.url}}" alt="Product Image" tabindex="0">
-                    <div class="card-body">
-                        <h5 class="card-title" tabindex="0">{{product.name}}</h5>
-                        <p class="card-text" tabindex="0">{{product.description}} <span
-                                class="badge badge-secondary">{{product.price}}원</span></p>
+                <div class="col-4">
+                    <div class="card">
+                      <img class="card-img-top" src="{{product.image.url}}" alt="Product Image">
+                      <div class="card-body">
+                        <h5 class="card-title">{{product.name}}</h5>
+                        <p class="card-text">{{product.description}} <span class="badge badge-secondary">{{product.price}}원</span></p>
                         <a href="{{product.get_absolute_url}}" class="btn btn-primary">자세히보기</a>
+                      </div>
                     </div>
+                    <br>
                 </div>
-                <br>
-            </div>
-
+                
 
             {% endfor %}
+            </div>
         </div>
     </div>
-</div>
+
+
 {% endblock %}

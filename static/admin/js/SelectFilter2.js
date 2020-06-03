@@ -164,6 +164,7 @@ Requires jQuery, core.js, and SelectBox.js.
 
             if (!is_stacked) {
                 // In horizontal mode, give the same height to the two boxes.
+<<<<<<< HEAD
                 var j_from_box = $(from_box);
                 var j_to_box = $(to_box);
                 var resize_filters = function() { j_to_box.height($(filter_p).outerHeight() + j_from_box.outerHeight()); };
@@ -173,6 +174,11 @@ Requires jQuery, core.js, and SelectBox.js.
                     // This fieldset is probably collapsed. Wait for its 'show' event.
                     j_to_box.closest('fieldset').one('show.fieldset', resize_filters);
                 }
+=======
+                var j_from_box = $('#' + field_id + '_from');
+                var j_to_box = $('#' + field_id + '_to');
+                j_to_box.height($(filter_p).outerHeight() + j_from_box.outerHeight());
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
             }
 
             // Initial icon refresh
@@ -185,11 +191,18 @@ Requires jQuery, core.js, and SelectBox.js.
                 // This is much faster in WebKit browsers than the fallback.
                 field.attr('required', 'required');
                 any_selected = field.is(':valid');
+<<<<<<< HEAD
                 field.removeAttr('required');
+=======
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
             } catch (e) {
                 // Browsers that don't support :valid (IE < 10)
                 any_selected = field.find('option:selected').length > 0;
             }
+<<<<<<< HEAD
+=======
+            field.removeAttr('required');
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
             return any_selected;
         },
         refresh_icons: function(field_id) {

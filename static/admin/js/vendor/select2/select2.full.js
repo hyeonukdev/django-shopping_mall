@@ -1,10 +1,15 @@
 /*!
+<<<<<<< HEAD
  * Select2 4.0.3
+=======
+ * Select2 4.0.7
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
  * https://select2.github.io
  *
  * Released under the MIT license
  * https://github.com/select2/select2/blob/master/LICENSE.md
  */
+<<<<<<< HEAD
 (function (factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
@@ -12,16 +17,48 @@
   } else if (typeof exports === 'object') {
     // Node/CommonJS
     factory(require('jquery'));
+=======
+;(function (factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module.
+    define(['jquery'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    // Node/CommonJS
+    module.exports = function (root, jQuery) {
+      if (jQuery === undefined) {
+        // require('jQuery') returns a factory that requires window to
+        // build a jQuery instance, we normalize how we use modules
+        // that require this pattern but the window provided is a noop
+        // if it's defined (how jquery works)
+        if (typeof window !== 'undefined') {
+          jQuery = require('jquery');
+        }
+        else {
+          jQuery = require('jquery')(root);
+        }
+      }
+      factory(jQuery);
+      return jQuery;
+    };
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
   } else {
     // Browser globals
     factory(jQuery);
   }
+<<<<<<< HEAD
 }(function (jQuery) {
   // This is needed so we can catch the AMD loader configuration and use it
   // The inner file should be wrapped (by `banner.start.js`) in a function that
   // returns the AMD loader references.
   var S2 =
 (function () {
+=======
+} (function (jQuery) {
+  // This is needed so we can catch the AMD loader configuration and use it
+  // The inner file should be wrapped (by `banner.start.js`) in a function that
+  // returns the AMD loader references.
+  var S2 =(function () {
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
   // Restore the Select2 AMD loader so it can be used
   // Needed mostly in the language files, where the loader is not inserted
   if (jQuery && jQuery.fn && jQuery.fn.select2 && jQuery.fn.select2.amd) {
@@ -30,6 +67,7 @@
 var S2;(function () { if (!S2 || !S2.requirejs) {
 if (!S2) { S2 = {}; } else { require = S2; }
 /**
+<<<<<<< HEAD
  * @license almond 0.3.1 Copyright (c) 2011-2014, The Dojo Foundation All Rights Reserved.
  * Available via the MIT or new BSD license.
  * see: http://github.com/jrburke/almond for details
@@ -37,6 +75,13 @@ if (!S2) { S2 = {}; } else { require = S2; }
 //Going sloppy to avoid 'use strict' string cost, but strict practices should
 //be followed.
 /*jslint sloppy: true */
+=======
+ * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
+ * Released under MIT license, http://github.com/requirejs/almond/LICENSE
+ */
+//Going sloppy to avoid 'use strict' string cost, but strict practices should
+//be followed.
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
 /*global setTimeout: false */
 
 var requirejs, require, define;
@@ -64,12 +109,17 @@ var requirejs, require, define;
      */
     function normalize(name, baseName) {
         var nameParts, nameSegment, mapValue, foundMap, lastIndex,
+<<<<<<< HEAD
             foundI, foundStarMap, starI, i, j, part,
+=======
+            foundI, foundStarMap, starI, i, j, part, normalizedBaseParts,
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
             baseParts = baseName && baseName.split("/"),
             map = config.map,
             starMap = (map && map['*']) || {};
 
         //Adjust any relative paths.
+<<<<<<< HEAD
         if (name && name.charAt(0) === ".") {
             //If have a base name, try to normalize against it,
             //otherwise, assume it is a top-level require that will
@@ -118,6 +168,54 @@ var requirejs, require, define;
                 // to baseUrl, pull off the leading dot.
                 name = name.substring(2);
             }
+=======
+        if (name) {
+            name = name.split('/');
+            lastIndex = name.length - 1;
+
+            // If wanting node ID compatibility, strip .js from end
+            // of IDs. Have to do this here, and not in nameToUrl
+            // because node allows either .js or non .js to map
+            // to same file.
+            if (config.nodeIdCompat && jsSuffixRegExp.test(name[lastIndex])) {
+                name[lastIndex] = name[lastIndex].replace(jsSuffixRegExp, '');
+            }
+
+            // Starts with a '.' so need the baseName
+            if (name[0].charAt(0) === '.' && baseParts) {
+                //Convert baseName to array, and lop off the last part,
+                //so that . matches that 'directory' and not name of the baseName's
+                //module. For instance, baseName of 'one/two/three', maps to
+                //'one/two/three.js', but we want the directory, 'one/two' for
+                //this normalization.
+                normalizedBaseParts = baseParts.slice(0, baseParts.length - 1);
+                name = normalizedBaseParts.concat(name);
+            }
+
+            //start trimDots
+            for (i = 0; i < name.length; i++) {
+                part = name[i];
+                if (part === '.') {
+                    name.splice(i, 1);
+                    i -= 1;
+                } else if (part === '..') {
+                    // If at the start, or previous value is still ..,
+                    // keep them so that when converted to a path it may
+                    // still work when converted to a path, even though
+                    // as an ID it is less than ideal. In larger point
+                    // releases, may be better to just kick out an error.
+                    if (i === 0 || (i === 1 && name[2] === '..') || name[i - 1] === '..') {
+                        continue;
+                    } else if (i > 0) {
+                        name.splice(i - 1, 2);
+                        i -= 2;
+                    }
+                }
+            }
+            //end trimDots
+
+            name = name.join('/');
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
         }
 
         //Apply map config if available.
@@ -230,32 +328,62 @@ var requirejs, require, define;
         return [prefix, name];
     }
 
+<<<<<<< HEAD
+=======
+    //Creates a parts array for a relName where first part is plugin ID,
+    //second part is resource ID. Assumes relName has already been normalized.
+    function makeRelParts(relName) {
+        return relName ? splitPrefix(relName) : [];
+    }
+
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
     /**
      * Makes a name map, normalizing the name, and using a plugin
      * for normalization if necessary. Grabs a ref to plugin
      * too, as an optimization.
      */
+<<<<<<< HEAD
     makeMap = function (name, relName) {
         var plugin,
             parts = splitPrefix(name),
             prefix = parts[0];
+=======
+    makeMap = function (name, relParts) {
+        var plugin,
+            parts = splitPrefix(name),
+            prefix = parts[0],
+            relResourceName = relParts[1];
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
 
         name = parts[1];
 
         if (prefix) {
+<<<<<<< HEAD
             prefix = normalize(prefix, relName);
+=======
+            prefix = normalize(prefix, relResourceName);
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
             plugin = callDep(prefix);
         }
 
         //Normalize according
         if (prefix) {
             if (plugin && plugin.normalize) {
+<<<<<<< HEAD
                 name = plugin.normalize(name, makeNormalize(relName));
             } else {
                 name = normalize(name, relName);
             }
         } else {
             name = normalize(name, relName);
+=======
+                name = plugin.normalize(name, makeNormalize(relResourceName));
+            } else {
+                name = normalize(name, relResourceName);
+            }
+        } else {
+            name = normalize(name, relResourceName);
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
             parts = splitPrefix(name);
             prefix = parts[0];
             name = parts[1];
@@ -302,13 +430,21 @@ var requirejs, require, define;
     };
 
     main = function (name, deps, callback, relName) {
+<<<<<<< HEAD
         var cjsModule, depName, ret, map, i,
+=======
+        var cjsModule, depName, ret, map, i, relParts,
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
             args = [],
             callbackType = typeof callback,
             usingExports;
 
         //Use name if no relName
         relName = relName || name;
+<<<<<<< HEAD
+=======
+        relParts = makeRelParts(relName);
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
 
         //Call the callback to define the module, if necessary.
         if (callbackType === 'undefined' || callbackType === 'function') {
@@ -317,7 +453,11 @@ var requirejs, require, define;
             //Default to [require, exports, module] if no deps
             deps = !deps.length && callback.length ? ['require', 'exports', 'module'] : deps;
             for (i = 0; i < deps.length; i += 1) {
+<<<<<<< HEAD
                 map = makeMap(deps[i], relName);
+=======
+                map = makeMap(deps[i], relParts);
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
                 depName = map.f;
 
                 //Fast path CommonJS standard dependencies.
@@ -373,7 +513,11 @@ var requirejs, require, define;
             //deps arg is the module name, and second arg (if passed)
             //is just the relName.
             //Normalize module name, if it contains . or ..
+<<<<<<< HEAD
             return callDep(makeMap(deps, callback).f);
+=======
+            return callDep(makeMap(deps, makeRelParts(callback)).f);
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
         } else if (!deps.splice) {
             //deps is a config object, not an array.
             config = deps;
@@ -556,10 +700,17 @@ S2.define('select2/utils',[
     DecoratedClass.prototype = new ctr();
 
     for (var m = 0; m < superMethods.length; m++) {
+<<<<<<< HEAD
         var superMethod = superMethods[m];
 
         DecoratedClass.prototype[superMethod] =
           SuperClass.prototype[superMethod];
+=======
+      var superMethod = superMethods[m];
+
+      DecoratedClass.prototype[superMethod] =
+        SuperClass.prototype[superMethod];
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
     }
 
     var calledMethod = function (methodName) {
@@ -754,6 +905,71 @@ S2.define('select2/utils',[
     $element.append($nodes);
   };
 
+<<<<<<< HEAD
+=======
+  // Cache objects in Utils.__cache instead of $.data (see #4346)
+  Utils.__cache = {};
+
+  var id = 0;
+  Utils.GetUniqueElementId = function (element) {
+    // Get a unique element Id. If element has no id,
+    // creates a new unique number, stores it in the id
+    // attribute and returns the new id.
+    // If an id already exists, it simply returns it.
+
+    var select2Id = element.getAttribute('data-select2-id');
+    if (select2Id == null) {
+      // If element has id, use it.
+      if (element.id) {
+        select2Id = element.id;
+        element.setAttribute('data-select2-id', select2Id);
+      } else {
+        element.setAttribute('data-select2-id', ++id);
+        select2Id = id.toString();
+      }
+    }
+    return select2Id;
+  };
+
+  Utils.StoreData = function (element, name, value) {
+    // Stores an item in the cache for a specified element.
+    // name is the cache key.
+    var id = Utils.GetUniqueElementId(element);
+    if (!Utils.__cache[id]) {
+      Utils.__cache[id] = {};
+    }
+
+    Utils.__cache[id][name] = value;
+  };
+
+  Utils.GetData = function (element, name) {
+    // Retrieves a value from the cache by its key (name)
+    // name is optional. If no name specified, return
+    // all cache items for the specified element.
+    // and for a specified element.
+    var id = Utils.GetUniqueElementId(element);
+    if (name) {
+      if (Utils.__cache[id]) {
+        if (Utils.__cache[id][name] != null) {
+          return Utils.__cache[id][name];
+        }
+        return $(element).data(name); // Fallback to HTML5 data attribs.
+      }
+      return $(element).data(name); // Fallback to HTML5 data attribs.
+    } else {
+      return Utils.__cache[id];
+    }
+  };
+
+  Utils.RemoveData = function (element) {
+    // Removes all cached items for a specified element.
+    var id = Utils.GetUniqueElementId(element);
+    if (Utils.__cache[id] != null) {
+      delete Utils.__cache[id];
+    }
+  };
+
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
   return Utils;
 });
 
@@ -889,7 +1105,11 @@ S2.define('select2/results',[
       $options.each(function () {
         var $option = $(this);
 
+<<<<<<< HEAD
         var item = $.data(this, 'data');
+=======
+        var item = Utils.GetData(this, 'data');
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
 
         // id needs to be converted to a string when comparing
         var id = '' + item.id;
@@ -994,7 +1214,11 @@ S2.define('select2/results',[
       this.template(data, option);
     }
 
+<<<<<<< HEAD
     $.data(option, 'data', data);
+=======
+    Utils.StoreData(option, 'data', data);
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
 
     return option;
   };
@@ -1035,7 +1259,14 @@ S2.define('select2/results',[
       }
 
       self.setClasses();
+<<<<<<< HEAD
       self.highlightFirstItem();
+=======
+
+      if (self.options.get('scrollAfterSelect')) {
+        self.highlightFirstItem();
+      }
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
     });
 
     container.on('unselect', function () {
@@ -1044,7 +1275,14 @@ S2.define('select2/results',[
       }
 
       self.setClasses();
+<<<<<<< HEAD
       self.highlightFirstItem();
+=======
+
+      if (self.options.get('scrollAfterSelect')) {
+        self.highlightFirstItem();
+      }
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
     });
 
     container.on('open', function () {
@@ -1080,7 +1318,11 @@ S2.define('select2/results',[
         return;
       }
 
+<<<<<<< HEAD
       var data = $highlighted.data('data');
+=======
+      var data = Utils.GetData($highlighted[0], 'data');
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
 
       if ($highlighted.attr('aria-selected') == 'true') {
         self.trigger('close', {});
@@ -1098,8 +1340,14 @@ S2.define('select2/results',[
 
       var currentIndex = $options.index($highlighted);
 
+<<<<<<< HEAD
       // If we are already at te top, don't move further
       if (currentIndex === 0) {
+=======
+      // If we are already at the top, don't move further
+      // If no options, currentIndex will be -1
+      if (currentIndex <= 0) {
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
         return;
       }
 
@@ -1192,7 +1440,11 @@ S2.define('select2/results',[
       function (evt) {
       var $this = $(this);
 
+<<<<<<< HEAD
       var data = $this.data('data');
+=======
+      var data = Utils.GetData(this, 'data');
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
 
       if ($this.attr('aria-selected') === 'true') {
         if (self.options.get('multiple')) {
@@ -1215,7 +1467,11 @@ S2.define('select2/results',[
 
     this.$results.on('mouseenter', '.select2-results__option[aria-selected]',
       function (evt) {
+<<<<<<< HEAD
       var data = $(this).data('data');
+=======
+      var data = Utils.GetData(this, 'data');
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
 
       self.getHighlightedResults()
           .removeClass('select2-results__option--highlighted');
@@ -1330,8 +1586,13 @@ S2.define('select2/selection/base',[
 
     this._tabindex = 0;
 
+<<<<<<< HEAD
     if (this.$element.data('old-tabindex') != null) {
       this._tabindex = this.$element.data('old-tabindex');
+=======
+    if (Utils.GetData(this.$element[0], 'old-tabindex') != null) {
+      this._tabindex = Utils.GetData(this.$element[0], 'old-tabindex');
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
     } else if (this.$element.attr('tabindex') != null) {
       this._tabindex = this.$element.attr('tabindex');
     }
@@ -1390,8 +1651,15 @@ S2.define('select2/selection/base',[
       self.$selection.removeAttr('aria-activedescendant');
       self.$selection.removeAttr('aria-owns');
 
+<<<<<<< HEAD
       self.$selection.focus();
 
+=======
+      window.setTimeout(function () {
+        self.$selection.focus();
+      }, 0);
+    
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
       self._detachCloseHandler(container);
     });
 
@@ -1439,7 +1707,11 @@ S2.define('select2/selection/base',[
           return;
         }
 
+<<<<<<< HEAD
         var $element = $this.data('element');
+=======
+        var $element = Utils.GetData(this, 'element');
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
 
         $element.select2('close');
       });
@@ -1500,7 +1772,14 @@ S2.define('select2/selection/single',[
 
     var id = container.id + '-container';
 
+<<<<<<< HEAD
     this.$selection.find('.select2-selection__rendered').attr('id', id);
+=======
+    this.$selection.find('.select2-selection__rendered')
+      .attr('id', id)
+      .attr('role', 'textbox')
+      .attr('aria-readonly', 'true');
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
     this.$selection.attr('aria-labelledby', id);
 
     this.$selection.on('mousedown', function (evt) {
@@ -1527,6 +1806,7 @@ S2.define('select2/selection/single',[
         self.$selection.focus();
       }
     });
+<<<<<<< HEAD
 
     container.on('selection:update', function (params) {
       self.update(params.data);
@@ -1535,6 +1815,14 @@ S2.define('select2/selection/single',[
 
   SingleSelection.prototype.clear = function () {
     this.$selection.find('.select2-selection__rendered').empty();
+=======
+  };
+
+  SingleSelection.prototype.clear = function () {
+    var $rendered = this.$selection.find('.select2-selection__rendered');
+    $rendered.empty();
+    $rendered.removeAttr('title'); // clear tooltip on empty
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
   };
 
   SingleSelection.prototype.display = function (data, container) {
@@ -1560,7 +1848,11 @@ S2.define('select2/selection/single',[
     var formatted = this.display(selection, $rendered);
 
     $rendered.empty().append(formatted);
+<<<<<<< HEAD
     $rendered.prop('title', selection.title || selection.text);
+=======
+    $rendered.attr('title', selection.title || selection.text);
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
   };
 
   return SingleSelection;
@@ -1612,7 +1904,11 @@ S2.define('select2/selection/multiple',[
         var $remove = $(this);
         var $selection = $remove.parent();
 
+<<<<<<< HEAD
         var data = $selection.data('data');
+=======
+        var data = Utils.GetData($selection[0], 'data');
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
 
         self.trigger('unselect', {
           originalEvent: evt,
@@ -1623,7 +1919,13 @@ S2.define('select2/selection/multiple',[
   };
 
   MultipleSelection.prototype.clear = function () {
+<<<<<<< HEAD
     this.$selection.find('.select2-selection__rendered').empty();
+=======
+    var $rendered = this.$selection.find('.select2-selection__rendered');
+    $rendered.empty();
+    $rendered.removeAttr('title');
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
   };
 
   MultipleSelection.prototype.display = function (data, container) {
@@ -1661,9 +1963,15 @@ S2.define('select2/selection/multiple',[
       var formatted = this.display(selection, $selection);
 
       $selection.append(formatted);
+<<<<<<< HEAD
       $selection.prop('title', selection.title || selection.text);
 
       $selection.data('data', selection);
+=======
+      $selection.attr('title', selection.title || selection.text);
+
+      Utils.StoreData($selection[0], 'data', selection);
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
 
       $selections.push($selection);
     }
@@ -1728,8 +2036,14 @@ S2.define('select2/selection/placeholder',[
 
 S2.define('select2/selection/allowClear',[
   'jquery',
+<<<<<<< HEAD
   '../keys'
 ], function ($, KEYS) {
+=======
+  '../keys',
+  '../utils'
+], function ($, KEYS, Utils) {
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
   function AllowClear () { }
 
   AllowClear.prototype.bind = function (decorated, container, $container) {
@@ -1771,10 +2085,29 @@ S2.define('select2/selection/allowClear',[
 
     evt.stopPropagation();
 
+<<<<<<< HEAD
     var data = $clear.data('data');
 
     for (var d = 0; d < data.length; d++) {
       var unselectData = {
+=======
+    var data = Utils.GetData($clear[0], 'data');
+
+    var previousVal = this.$element.val();
+    this.$element.val(this.placeholder.id);
+
+    var unselectData = {
+      data: data
+    };
+    this.trigger('clear', unselectData);
+    if (unselectData.prevented) {
+      this.$element.val(previousVal);
+      return;
+    }
+
+    for (var d = 0; d < data.length; d++) {
+      unselectData = {
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
         data: data[d]
       };
 
@@ -1784,11 +2117,19 @@ S2.define('select2/selection/allowClear',[
 
       // If the event was prevented, don't clear it out.
       if (unselectData.prevented) {
+<<<<<<< HEAD
+=======
+        this.$element.val(previousVal);
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
         return;
       }
     }
 
+<<<<<<< HEAD
     this.$element.val(this.placeholder.id).trigger('change');
+=======
+    this.$element.trigger('change');
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
 
     this.trigger('toggle', {});
   };
@@ -1811,12 +2152,23 @@ S2.define('select2/selection/allowClear',[
       return;
     }
 
+<<<<<<< HEAD
     var $remove = $(
       '<span class="select2-selection__clear">' +
         '&times;' +
       '</span>'
     );
     $remove.data('data', data);
+=======
+    var removeAll = this.options.get('translations').get('removeAllItems');   
+
+    var $remove = $(
+      '<span class="select2-selection__clear" title="' + removeAll() +'">' +
+        '&times;' +
+      '</span>'
+    );
+    Utils.StoreData($remove[0], 'data', data);
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
 
     this.$selection.find('.select2-selection__rendered').prepend($remove);
   };
@@ -1837,7 +2189,11 @@ S2.define('select2/selection/search',[
     var $search = $(
       '<li class="select2-search select2-search--inline">' +
         '<input class="select2-search__field" type="search" tabindex="-1"' +
+<<<<<<< HEAD
         ' autocomplete="off" autocorrect="off" autocapitalize="off"' +
+=======
+        ' autocomplete="off" autocorrect="off" autocapitalize="none"' +
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
         ' spellcheck="false" role="textbox" aria-autocomplete="list" />' +
       '</li>'
     );
@@ -1907,7 +2263,11 @@ S2.define('select2/selection/search',[
           .prev('.select2-selection__choice');
 
         if ($previousChoice.length > 0) {
+<<<<<<< HEAD
           var item = $previousChoice.data('data');
+=======
+          var item = Utils.GetData($previousChoice[0], 'data');
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
 
           self.searchRemoveChoice(item);
 
@@ -2001,7 +2361,17 @@ S2.define('select2/selection/search',[
 
     this.resizeSearch();
     if (searchHadFocus) {
+<<<<<<< HEAD
       this.$search.focus();
+=======
+      var isTagInput = this.$element.find('[data-select2-tag]').length;
+      if (isTagInput) {
+        // fix IE11 bug where tag input lost focus
+        this.$element.focus();
+      } else {
+        this.$search.focus();
+      }
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
     }
   };
 
@@ -2058,10 +2428,20 @@ S2.define('select2/selection/eventRelay',[
       'open', 'opening',
       'close', 'closing',
       'select', 'selecting',
+<<<<<<< HEAD
       'unselect', 'unselecting'
     ];
 
     var preventableEvents = ['opening', 'closing', 'selecting', 'unselecting'];
+=======
+      'unselect', 'unselecting',
+      'clear', 'clearing'
+    ];
+
+    var preventableEvents = [
+      'opening', 'closing', 'selecting', 'unselecting', 'clearing'
+    ];
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
 
     decorated.call(this, container, $container);
 
@@ -2394,6 +2774,10 @@ S2.define('select2/diacritics',[
     '\u019F': 'O',
     '\uA74A': 'O',
     '\uA74C': 'O',
+<<<<<<< HEAD
+=======
+    '\u0152': 'OE',
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
     '\u01A2': 'OI',
     '\uA74E': 'OO',
     '\u0222': 'OU',
@@ -2803,6 +3187,10 @@ S2.define('select2/diacritics',[
     '\uA74B': 'o',
     '\uA74D': 'o',
     '\u0275': 'o',
+<<<<<<< HEAD
+=======
+    '\u0153': 'oe',
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
     '\u01A3': 'oi',
     '\u0223': 'ou',
     '\uA74F': 'oo',
@@ -2971,8 +3359,14 @@ S2.define('select2/diacritics',[
     '\u03CD': '\u03C5',
     '\u03CB': '\u03C5',
     '\u03B0': '\u03C5',
+<<<<<<< HEAD
     '\u03C9': '\u03C9',
     '\u03C2': '\u03C3'
+=======
+    '\u03CE': '\u03C9',
+    '\u03C2': '\u03C3',
+    '\u2019': '\''
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
   };
 
   return diacritics;
@@ -3140,7 +3534,11 @@ S2.define('select2/data/select',[
     // Remove anything added to child elements
     this.$element.find('*').each(function () {
       // Remove any custom data set by Select2
+<<<<<<< HEAD
       $.removeData(this, 'data');
+=======
+      Utils.RemoveData(this);
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
     });
   };
 
@@ -3191,7 +3589,11 @@ S2.define('select2/data/select',[
       }
     }
 
+<<<<<<< HEAD
     if (data.id) {
+=======
+    if (data.id !== undefined) {
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
       option.value = data.id;
     }
 
@@ -3213,7 +3615,11 @@ S2.define('select2/data/select',[
     normalizedData.element = option;
 
     // Override the option's data with the combined data
+<<<<<<< HEAD
     $.data(option, 'data', normalizedData);
+=======
+    Utils.StoreData(option, 'data', normalizedData);
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
 
     return $option;
   };
@@ -3221,7 +3627,11 @@ S2.define('select2/data/select',[
   SelectAdapter.prototype.item = function ($option) {
     var data = {};
 
+<<<<<<< HEAD
     data = $.data($option[0], 'data');
+=======
+    data = Utils.GetData($option[0], 'data');
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
 
     if (data != null) {
       return data;
@@ -3259,13 +3669,21 @@ S2.define('select2/data/select',[
     data = this._normalizeItem(data);
     data.element = $option[0];
 
+<<<<<<< HEAD
     $.data($option[0], 'data', data);
+=======
+    Utils.StoreData($option[0], 'data', data);
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
 
     return data;
   };
 
   SelectAdapter.prototype._normalizeItem = function (item) {
+<<<<<<< HEAD
     if (!$.isPlainObject(item)) {
+=======
+    if (item !== Object(item)) {
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
       item = {
         id: item,
         text: item
@@ -3469,7 +3887,12 @@ S2.define('select2/data/ajax',[
       }, function () {
         // Attempt to detect if a request was aborted
         // Only works if the transport exposes a status property
+<<<<<<< HEAD
         if ($request.status && $request.status === '0') {
+=======
+        if ('status' in $request &&
+            ($request.status === 0 || $request.status === '0')) {
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
           return;
         }
 
@@ -3550,7 +3973,14 @@ S2.define('select2/data/tags',[
           }, true)
         );
 
+<<<<<<< HEAD
         var checkText = option.text === params.term;
+=======
+        var optionText = (option.text || '').toUpperCase();
+        var paramsTerm = (params.term || '').toUpperCase();
+
+        var checkText = optionText === paramsTerm;
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
 
         if (checkText || checkChildren) {
           if (child) {
@@ -3865,7 +4295,11 @@ S2.define('select2/dropdown',[
   };
 
   Dropdown.prototype.position = function ($dropdown, $container) {
+<<<<<<< HEAD
     // Should be implmented in subclasses
+=======
+    // Should be implemented in subclasses
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
   };
 
   Dropdown.prototype.destroy = function () {
@@ -3888,7 +4322,11 @@ S2.define('select2/dropdown/search',[
     var $search = $(
       '<span class="select2-search select2-search--dropdown">' +
         '<input class="select2-search__field" type="search" tabindex="-1"' +
+<<<<<<< HEAD
         ' autocomplete="off" autocorrect="off" autocapitalize="off"' +
+=======
+        ' autocomplete="off" autocorrect="off" autocapitalize="none"' +
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
         ' spellcheck="false" role="textbox" />' +
       '</span>'
     );
@@ -3938,10 +4376,18 @@ S2.define('select2/dropdown/search',[
       self.$search.attr('tabindex', -1);
 
       self.$search.val('');
+<<<<<<< HEAD
     });
 
     container.on('focus', function () {
       if (container.isOpen()) {
+=======
+      self.$search.blur();
+    });
+
+    container.on('focus', function () {
+      if (!container.isOpen()) {
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
         self.$search.focus();
       }
     });
@@ -4203,14 +4649,22 @@ S2.define('select2/dropdown/attachBody',[
 
     var $watchers = this.$container.parents().filter(Utils.hasScroll);
     $watchers.each(function () {
+<<<<<<< HEAD
       $(this).data('select2-scroll-position', {
+=======
+      Utils.StoreData(this, 'select2-scroll-position', {
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
         x: $(this).scrollLeft(),
         y: $(this).scrollTop()
       });
     });
 
     $watchers.on(scrollEvent, function (ev) {
+<<<<<<< HEAD
       var position = $(this).data('select2-scroll-position');
+=======
+      var position = Utils.GetData(this, 'select2-scroll-position');
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
       $(this).scrollTop(position.y);
     });
 
@@ -4269,10 +4723,17 @@ S2.define('select2/dropdown/attachBody',[
       top: container.bottom
     };
 
+<<<<<<< HEAD
     // Determine what the parent element is to use for calciulating the offset
     var $offsetParent = this.$dropdownParent;
 
     // For statically positoned elements, we need to get the element
+=======
+    // Determine what the parent element is to use for calculating the offset
+    var $offsetParent = this.$dropdownParent;
+
+    // For statically positioned elements, we need to get the element
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
     // that is determining the offset
     if ($offsetParent.css('position') === 'static') {
       $offsetParent = $offsetParent.offsetParent();
@@ -4375,8 +4836,13 @@ S2.define('select2/dropdown/minimumResultsForSearch',[
 });
 
 S2.define('select2/dropdown/selectOnClose',[
+<<<<<<< HEAD
 
 ], function () {
+=======
+  '../utils'
+], function (Utils) {
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
   function SelectOnClose () { }
 
   SelectOnClose.prototype.bind = function (decorated, container, $container) {
@@ -4407,7 +4873,11 @@ S2.define('select2/dropdown/selectOnClose',[
       return;
     }
 
+<<<<<<< HEAD
     var data = $highlightedResults.data('data');
+=======
+    var data = Utils.GetData($highlightedResults[0], 'data');
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
 
     // Don't re-select already selected resulte
     if (
@@ -4448,7 +4918,11 @@ S2.define('select2/dropdown/closeOnSelect',[
     var originalEvent = evt.originalEvent;
 
     // Don't close if the control key is being held
+<<<<<<< HEAD
     if (originalEvent && originalEvent.ctrlKey) {
+=======
+    if (originalEvent && (originalEvent.ctrlKey || originalEvent.metaKey)) {
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
       return;
     }
 
@@ -4502,6 +4976,12 @@ S2.define('select2/i18n/en',[],function () {
     },
     searching: function () {
       return 'Searching…';
+<<<<<<< HEAD
+=======
+    },
+    removeAllItems: function () {
+      return 'Remove all items';
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
     }
   };
 });
@@ -4873,6 +5353,10 @@ S2.define('select2/defaults',[
       maximumSelectionLength: 0,
       minimumResultsForSearch: 0,
       selectOnClose: false,
+<<<<<<< HEAD
+=======
+      scrollAfterSelect: false,
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
       sorter: function (data) {
         return data;
       },
@@ -4895,7 +5379,11 @@ S2.define('select2/defaults',[
 
     var convertedData = Utils._convertData(data);
 
+<<<<<<< HEAD
     $.extend(this.defaults, convertedData);
+=======
+    $.extend(true, this.defaults, convertedData);
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
   };
 
   var defaults = new Defaults();
@@ -4960,7 +5448,11 @@ S2.define('select2/options',[
     $e.prop('disabled', this.options.disabled);
     $e.prop('multiple', this.options.multiple);
 
+<<<<<<< HEAD
     if ($e.data('select2Tags')) {
+=======
+    if (Utils.GetData($e[0], 'select2Tags')) {
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
       if (this.options.debug && window.console && console.warn) {
         console.warn(
           'Select2: The `data-select2-tags` attribute has been changed to ' +
@@ -4969,11 +5461,19 @@ S2.define('select2/options',[
         );
       }
 
+<<<<<<< HEAD
       $e.data('data', $e.data('select2Tags'));
       $e.data('tags', true);
     }
 
     if ($e.data('ajaxUrl')) {
+=======
+      Utils.StoreData($e[0], 'data', Utils.GetData($e[0], 'select2Tags'));
+      Utils.StoreData($e[0], 'tags', true);
+    }
+
+    if (Utils.GetData($e[0], 'ajaxUrl')) {
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
       if (this.options.debug && window.console && console.warn) {
         console.warn(
           'Select2: The `data-ajax-url` attribute has been changed to ' +
@@ -4982,12 +5482,18 @@ S2.define('select2/options',[
         );
       }
 
+<<<<<<< HEAD
       $e.attr('ajax--url', $e.data('ajaxUrl'));
       $e.data('ajax--url', $e.data('ajaxUrl'));
+=======
+      $e.attr('ajax--url', Utils.GetData($e[0], 'ajaxUrl'));
+      Utils.StoreData($e[0], 'ajax-Url', Utils.GetData($e[0], 'ajaxUrl'));
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
     }
 
     var dataset = {};
 
+<<<<<<< HEAD
     // Prefer the element's `dataset` attribute if it exists
     // jQuery 1.x does not correctly handle data attributes with multiple dashes
     if ($.fn.jquery && $.fn.jquery.substr(0, 2) == '1.' && $e[0].dataset) {
@@ -4997,6 +5503,41 @@ S2.define('select2/options',[
     }
 
     var data = $.extend(true, {}, dataset);
+=======
+    function upperCaseLetter(_, letter) {
+      return letter.toUpperCase();
+    }
+
+    // Pre-load all of the attributes which are prefixed with `data-`
+    for (var attr = 0; attr < $e[0].attributes.length; attr++) {
+      var attributeName = $e[0].attributes[attr].name;
+      var prefix = 'data-';
+
+      if (attributeName.substr(0, prefix.length) == prefix) {
+        // Get the contents of the attribute after `data-`
+        var dataName = attributeName.substring(prefix.length);
+
+        // Get the data contents from the consistent source
+        // This is more than likely the jQuery data helper
+        var dataValue = Utils.GetData($e[0], dataName);
+
+        // camelCase the attribute name to match the spec
+        var camelDataName = dataName.replace(/-([a-z])/g, upperCaseLetter);
+
+        // Store the data attribute contents into the dataset since
+        dataset[camelDataName] = dataValue;
+      }
+    }
+
+    // Prefer the element's `dataset` attribute if it exists
+    // jQuery 1.x does not correctly handle data attributes with multiple dashes
+    if ($.fn.jquery && $.fn.jquery.substr(0, 2) == '1.' && $e[0].dataset) {
+      dataset = $.extend(true, {}, $e[0].dataset, dataset);
+    }
+
+    // Prefer our internal data cache if it exists
+    var data = $.extend(true, {}, Utils.GetData($e[0]), dataset);
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
 
     data = Utils._convertData(data);
 
@@ -5033,8 +5574,13 @@ S2.define('select2/core',[
   './keys'
 ], function ($, Options, Utils, KEYS) {
   var Select2 = function ($element, options) {
+<<<<<<< HEAD
     if ($element.data('select2') != null) {
       $element.data('select2').destroy();
+=======
+    if (Utils.GetData($element[0], 'select2') != null) {
+      Utils.GetData($element[0], 'select2').destroy();
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
     }
 
     this.$element = $element;
@@ -5050,7 +5596,11 @@ S2.define('select2/core',[
     // Set up the tabindex
 
     var tabindex = $element.attr('tabindex') || 0;
+<<<<<<< HEAD
     $element.data('old-tabindex', tabindex);
+=======
+    Utils.StoreData($element[0], 'old-tabindex', tabindex);
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
     $element.attr('tabindex', '-1');
 
     // Set up containers and adapters
@@ -5111,6 +5661,12 @@ S2.define('select2/core',[
     // Synchronize any monitored attributes
     this._syncAttributes();
 
+<<<<<<< HEAD
+=======
+    Utils.StoreData($element[0], 'select2', this);
+
+    // Ensure backwards compatibility with $element.data('select2').
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
     $element.data('select2', this);
   };
 
@@ -5445,7 +6001,12 @@ S2.define('select2/core',[
       'open': 'opening',
       'close': 'closing',
       'select': 'selecting',
+<<<<<<< HEAD
       'unselect': 'unselecting'
+=======
+      'unselect': 'unselecting',
+      'clear': 'clearing'
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
     };
 
     if (args === undefined) {
@@ -5600,10 +6161,19 @@ S2.define('select2/core',[
     this._syncS = null;
 
     this.$element.off('.select2');
+<<<<<<< HEAD
     this.$element.attr('tabindex', this.$element.data('old-tabindex'));
 
     this.$element.removeClass('select2-hidden-accessible');
     this.$element.attr('aria-hidden', 'false');
+=======
+    this.$element.attr('tabindex',
+    Utils.GetData(this.$element[0], 'old-tabindex'));
+
+    this.$element.removeClass('select2-hidden-accessible');
+    this.$element.attr('aria-hidden', 'false');
+    Utils.RemoveData(this.$element[0]);
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
     this.$element.removeData('select2');
 
     this.dataAdapter.destroy();
@@ -5631,7 +6201,11 @@ S2.define('select2/core',[
 
     this.$container.addClass('select2-container--' + this.options.get('theme'));
 
+<<<<<<< HEAD
     $container.data('element', this.$element);
+=======
+    Utils.StoreData($container[0], 'element', this.$element);
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
 
     return $container;
   };
@@ -5841,8 +6415,14 @@ S2.define('select2/compat/initSelection',[
 });
 
 S2.define('select2/compat/inputData',[
+<<<<<<< HEAD
   'jquery'
 ], function ($) {
+=======
+  'jquery',
+  '../utils'
+], function ($, Utils) {
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
   function InputData (decorated, $element, options) {
     this._currentData = [];
     this._valueSeparator = options.get('valueSeparator') || ',';
@@ -5959,7 +6539,11 @@ S2.define('select2/compat/inputData',[
 
   InputData.prototype.addOptions = function (_, $options) {
     var options = $.map($options, function ($option) {
+<<<<<<< HEAD
       return $.data($option[0], 'data');
+=======
+      return Utils.GetData($option[0], 'data');
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
     });
 
     this._currentData.push.apply(this._currentData, options);
@@ -6362,8 +6946,14 @@ S2.define('jquery.select2',[
   'jquery-mousewheel',
 
   './select2/core',
+<<<<<<< HEAD
   './select2/defaults'
 ], function ($, _, Select2, Defaults) {
+=======
+  './select2/defaults',
+  './select2/utils'
+], function ($, _, Select2, Defaults, Utils) {
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
   if ($.fn.select2 == null) {
     // All methods that should return the element
     var thisMethods = ['open', 'close', 'destroy'];
@@ -6384,7 +6974,11 @@ S2.define('jquery.select2',[
         var args = Array.prototype.slice.call(arguments, 1);
 
         this.each(function () {
+<<<<<<< HEAD
           var instance = $(this).data('select2');
+=======
+          var instance = Utils.GetData(this, 'select2');
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
 
           if (instance == null && window.console && console.error) {
             console.error(

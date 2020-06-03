@@ -441,6 +441,11 @@ select {
 }
 
 select[multiple] {
+<<<<<<< HEAD
+=======
+    /* Allow HTML size attribute to override the height in the rule above. */
+    height: auto;
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
     min-height: 150px;
 }
 
@@ -662,6 +667,14 @@ div.breadcrumbs a:focus, div.breadcrumbs a:hover {
 
 /* ACTION ICONS */
 
+<<<<<<< HEAD
+=======
+.viewlink, .inlineviewlink {
+    padding-left: 16px;
+    background: url(../img/icon-viewlink.svg) 0 1px no-repeat;
+}
+
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
 .addlink {
     padding-left: 16px;
     background: url(../img/icon-addlink.svg) 0 1px no-repeat;
@@ -822,10 +835,19 @@ table#change-history tbody th {
 
 #header {
     width: auto;
+<<<<<<< HEAD
     height: 40px;
     padding: 10px 40px;
     background: #417690;
     line-height: 40px;
+=======
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    background: #417690;
+>>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
     color: #ffc;
     overflow: hidden;
 }
