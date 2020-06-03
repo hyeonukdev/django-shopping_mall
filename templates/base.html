@@ -22,7 +22,16 @@
 
   {% block style %}
   {% endblock %}
-  {% block home_style %} {% endblock %}
+
+  {% block home_style %} 
+  {% endblock %}
+
+  {% block category_style %} 
+  {% endblock %}
+
+  {% block detail_style %}
+  {% endblock %}
+
 </head>
 
 
@@ -37,7 +46,8 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav justify-content-end">
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'shop:product_all' %}">카테고리</a>
+          <!-- <a class="nav-link" href="{% url 'shop:product_all' %}">카테고리</a> -->
+          <a class="nav-link" href="{% url 'category_page:categories' %}">카테고리</a>
         </li>
         <li class="nav-item">
           {% if user.is_authenticated %}
@@ -65,6 +75,9 @@
   </div>
   </div>
 
+  {% block category_content %}
+  {% endblock %}
+  
 
   <!-- TTS -->
   <script type="text/javascript">

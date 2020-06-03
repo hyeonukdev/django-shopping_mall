@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>CSS</title>
+    <style>
+      #jb-container {
+        width: auto;
+        margin: 0px auto;
+        padding: 20px;
+        border: 1px solid #bcbcbc;
+      }
+      #jb-header {
+        padding: 20px;
+        margin-bottom: 20px;
+        border: 1px solid #bcbcbc;
+      }
+      #jb-content {
+        width: 45%;
+        padding: 20px;
+        margin-bottom: 20px;
+        float: left;
+        border: 1px solid #bcbcbc;
+      }
+      #jb-sidebar {
+        width: 45%;
+        height: 300px;
+        padding: 20px;
+        margin-bottom: 20px;
+        float: right;
+        border: 1px solid #bcbcbc;
+      }
+      #jb-footer {
+        clear: both;
+        padding: 20px;
+        border: 1px solid #bcbcbc;
+      }
+      #select-bar {
+          font-size: 30px;
+          width : 300px;
+          padding : 20px;
+      }
+      #bag-button {
+          font-size: 30px;
+          width : 300px;
+          padding : 20px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="jb-container">
+      <div id="jb-header">
+        <h1>상품명</h1>
+      </div>
+      <div id="jb-content">
+        <h2>카테고리 / 남성 / 반팔티</h2>
+        <img src="https://image.msscdn.net/images/goods_img/20180222/721489/721489_2_500.jpg">
+      </div>
+      <div id="jb-sidebar">
+        <h1>
+            상품 설명
+        </h1>
+        <p>상품 설명이 나옴</p>
+      </div>
+      
+      <div id="jb-sidebar">
+          <select id="select-bar", name = "사이즈" >
+              <option value ="90">90</option>
+              <option value ="90">95</option>
+              <option value ="90">100</option>
+              <option value ="90">105</option>
+              <option value ="90">110</option>
+          </select>
+          <button id="bag-button">
+              장바구니
+          </button>
+      </div>
+
+      <div id="jb-footer">
+        <p>Copyright</p>
+      </div>
+    </div>
+  </body>
+</html>
