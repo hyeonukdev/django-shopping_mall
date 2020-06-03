@@ -20,6 +20,7 @@ def product_in_category(request, category_slug=None):
             "categories": categories,
             "products": products,
         },
+
     )
 
 
