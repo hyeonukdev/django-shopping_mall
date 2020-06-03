@@ -27,9 +27,21 @@ def product_in_category(request, category_slug=None):
 from cart.forms import AddProductForm
 
 
-def product_detail(request, id, product_slug=None):
+def product_detail(request, id, product_slug=None, category_slug=None):
+    current_category = None
+    categories = Category.objects.all()
+
+    if category_slug:
+        current_category = get_object_or_404(Category, slug=category_slug)
+
     product = get_object_or_404(Product, id=id, slug=product_slug)
     add_to_cart = AddProductForm(initial={"제품수량": 1})
     return render(
-        request, "shop/detail.html", {"product": product, "add_to_cart": add_to_cart}
+        request,
+        "shop/detail.html",
+        {
+            "product": product,
+            "add_to_cart": add_to_cart,
+            "current_category": current_category,
+        },
     )
