@@ -7,12 +7,14 @@
     <div class="row">
         <div class="col-4">
             <img src="{{product.image.url}}" width="100%" tabindex="0"> <br>
-            <form>
-                <input onclick="analyze('http://59.26.44.137:8001{{product.image.url}}')" value="이미지분석하기" type="button"
-                    class="floating_element">
-            </form>
-            <br>
-            <textarea id="messageTextArea" rows="3" class="floating_element" cols="20" readonly>...</textarea>
+            <div class="result">
+                <form>
+                    <input onclick="analyze('http://59.26.44.137:8001{{product.image.url}}')" value="이미지분석하기"
+                        type="button" class="floating_element">
+                </form>
+                <br>
+                <textarea id="messageTextArea" rows="3" class="floating_element" cols="20" readonly>...</textarea>
+            </div>
         </div>
         <div class="col">
             <h1 class="display-6" tabindex="0">{{product.name}}</h1>

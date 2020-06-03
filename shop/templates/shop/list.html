@@ -25,15 +25,6 @@
             <div class="col-4">
                 <div class="card">
                     <img class="card-img-top" src="{{product.image.url}}" alt="Product Image" tabindex="0">
-                    <div class="image_processing">
-                        <form>
-                            <input onclick="analyze('http://59.26.44.137:8001{{product.image.url}}')" value="이미지분석하기"
-                                type="button" class="floating_element">
-                        </form>
-                        <br>
-                        <textarea id="messageTextArea" rows="2" class="floating_element" cols="20"
-                            readonly>...</textarea>
-                    </div>
                     <div class="card-body">
                         <h5 class="card-title" tabindex="0">{{product.name}}</h5>
                         <p class="card-text" tabindex="0">{{product.description}} <span
