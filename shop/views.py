@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import *
 
 
+# T-shirts
 def product_in_category(request, category_slug=None):
     current_category = None
     categories = Category.objects.all()
@@ -14,13 +15,12 @@ def product_in_category(request, category_slug=None):
 
     return render(
         request,
-        "shop/list.html",
+        "shop/list_t_shirt.html",
         {
             "current_category": current_category,
             "categories": categories,
             "products": products,
         },
-
     )
 
 

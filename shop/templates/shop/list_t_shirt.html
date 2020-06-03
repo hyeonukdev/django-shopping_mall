@@ -35,15 +35,15 @@
 <div id="jb-container">
   <div id="jb-content">
     <div style="margin-bottom: 30px;">
-        <font size="5em" color="black" tabindex="0">
-            남성의류 / 상의 / 반팔 티셔츠
-        </font>
+      <font size="5em" color="black" tabindex="0">
+        남성의류 / 상의 / 반팔티셔츠
+      </font>
     </div>
-    
+
 
     <div class="row">
       {% for product in products %}
-      
+
       {% if '반팔티' in product.name %}
       <div class="col-6">
         <div class="card" style="width: 100%;">
@@ -62,7 +62,7 @@
         </div>
         <br>
       </div>
-      {% endif %}      
+      {% endif %}
       {% endfor %}
     </div>
   </div>
