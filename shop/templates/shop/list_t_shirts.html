@@ -47,9 +47,6 @@
       {% if '반팔티' in product.name %}
       <div class="col-6">
         <div class="card" style="width: 100%;">
-          <font size="6px" color="black" style="margin-left: 20px;" tabindex="0">
-            {{forloop.counter}}
-          </font>
           <a href="{{product.get_absolute_url}}">
             <img class="card-img-top" src="{{product.image.url}}" alt="Product Image">
           </a>
