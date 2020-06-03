@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block home_style %}
+<style>
+    #jb-container {
+      width: auto;
+      height: auto;
+      margin: 0px auto;
+      padding: 0px;
+      border: 1px solid #bcbcbc;
+    }
+    #jb-header {
+      padding: 20px;
+      margin-bottom: 0px;
+      border: 1px solid #bcbcbc;
+    }
+    #jb-content {
+      width: auto;
+      padding: 10px;
+      margin-bottom: 0px;
+      border: 1px solid #bcbcbc;
+    }
+    #jb-footer {
+      clear: both;
+      padding: 20px;
+      border: 1px solid #bcbcbc;
+    }
+  </style>
+{% endblock %}
+
+{% block home_content %}
+  <div id="jb-container">
+    <div id="jb-content">    
+
+        <font size="5em" color="black">
+          BEST 상품
+        </font>
+
+        <div class="row">
+        {% for product in products %}          
+          {% if '반팔티' in product.name %}              
+            <div class="col-4">
+              <div class="card" style="width: 100%;">
+                <font size="6px" color="black" style="margin-left: 20px;">
+                  {{forloop.counter}}
+                </font>
+                <a href="{{product.get_absolute_url}}">
+                    <img class="card-img-top" src="{{product.image.url}}" alt="Product Image">
+                </a>
+                <div class="card-body">
+                  <!-- <textarea style="border: 0; width: 100px; height: 40px;" readonly>
+                    {{product.name}}
+                  </textarea>   -->
+                  <span><h5 class="card-title">{{product.name}}</h5></span>
+                  <span class="badge badge-secondary">{{product.price}}원</span>                  
+                </div>
+              </div>
+              <br>
+            </div>
+          {% endif %}            
+        {% endfor %}
+        </div>
+    </div>
+  </div>
+{% endblock %}
