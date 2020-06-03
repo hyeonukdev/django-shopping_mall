@@ -118,7 +118,7 @@
         }
 
         // voice
-        alert(tts);
+        //alert(tts);
         speech(tts);
 
         // 이미지객체 검출
@@ -221,7 +221,7 @@
     var shift_cnt = 0; // 축소
 
     document.onkeydown = function (e) {
-      if (e.which == 107) {
+      if (e.which == 187) {
         ctrl_cnt += 1;
       }
       if (ctrl_cnt == 2) {
@@ -229,7 +229,7 @@
         ctrl_cnt = 0;
       }
 
-      if (e.which == 109) {
+      if (e.which == 189) {
         shift_cnt += 1;
       }
       if (shift_cnt == 2) {
