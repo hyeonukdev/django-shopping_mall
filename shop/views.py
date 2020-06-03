@@ -15,7 +15,7 @@ def product_in_category(request, category_slug=None):
 
     return render(
         request,
-        "shop/list_t_shirt.html",
+        "shop/list_t_shirts.html",
         {
             "current_category": current_category,
             "categories": categories,
