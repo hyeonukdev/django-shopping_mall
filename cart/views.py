@@ -14,7 +14,7 @@ def add(request, product_id):
     form = AddProductForm(request.POST)
     if form.is_valid():
         cd = form.cleaned_data
-        cart.add(product=product, quantity=cd["quantity"], is_update=cd["is_update"])
+        cart.add(product=product, quantity=cd["제품수량"], is_update=cd["is_update"])
 
     return redirect("cart:detail")
 
@@ -30,6 +30,6 @@ def detail(request):
     cart = Cart(request)
     for product in cart:
         product["quantity_form"] = AddProductForm(
-            initial={"quantity": product["quantity"], "is_update": True}
+            initial={"제품수량": product["quantity"], "is_update": True}
         )
     return render(request, "cart/detail.html", {"cart": cart})

@@ -9,12 +9,12 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th scope="col">이미지</th>
-            <th scope="col">상품명</th>
-            <th scope="col">수량</th>
-            <th scope="col">제거</th>
-            <th scope="col">개당 가격</th>
-            <th scope="col">제품 가격</th>
+            <th scope="col" tabindex="0">이미지</th>
+            <th scope="col" tabindex="0">상품명</th>
+            <th scope="col" tabindex="0">수량</th>
+            <th scope="col" tabindex="0">제거</th>
+            <th scope="col" tabindex="0">개당 가격</th>
+            <th scope="col" tabindex="0">제품 가격</th>
         </tr>
     </thead>
     <tbody>
@@ -29,7 +29,7 @@
             <td tabindex="0">{{ product.name }}</td>
             <td>
                 <form action="{% url "cart:product_add" product.id %}" method="post">
-                    {{ item.quantity_form.quantity }}
+                    {{ item.quantity_form.제품수량 }}
                     {{ item.quantity_form.is_update }}
                     <input type="submit" class="btn btn-primary" value="반영하기">
                     {% csrf_token %}

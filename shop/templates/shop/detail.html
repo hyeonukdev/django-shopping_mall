@@ -20,7 +20,7 @@
             <h1 class="display-6" tabindex="0">{{product.name}}</h1>
 
             <p tabindex="0"><span class="badge badge-secondary">가격</span> {{product.price}}</p>
-            <form action="{% url 'cart:product_add' product.id %}" method="post">
+            <form action="{% url 'cart:product_add' product.id %}" method="post" tabindex="0">
                 {{add_to_cart}}
                 {% csrf_token %}
                 <input type="submit" class="btn btn-primary btn-sm" value="카트에 넣기">
