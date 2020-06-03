@@ -1,35 +1,119 @@
 {% extends 'base.html' %}
 {% block title %}상세페이지{% endblock %}
+
+{% block detail_style %}
+<style>
+    #jb-container {
+      width: auto;
+      margin: 0px auto;
+      padding: 20px;
+      border: 1px solid #bcbcbc;
+    }
+    #jb-header {
+      padding: 20px;
+      margin-bottom: 20px;
+      border: 1px solid #bcbcbc;
+    }
+    #jb-content {
+      width: 45%;
+      padding: 20px;
+      margin-bottom: 20px;
+      float: left;
+      border: 1px solid #bcbcbc;
+    }
+    #jb-sidebar {
+      width: 45%;
+      height: auto;
+      padding: 20px;
+      margin-bottom: 20px;
+      float: right;
+      border: 1px solid #bcbcbc;
+    }
+    #jb-footer {
+      clear: both;
+      padding: 0px;
+      border: 0px solid #bcbcbc;
+    }
+    #select-bar {
+        font-size: 30px;
+        width : 300px;
+        padding : 20px;
+    }
+    #bag-button {
+        font-size: 30px;
+        width : 300px;
+        padding : 20px;
+    }
+  </style>
+{% endblock %}
+
 {% block content %}
 
+<div id="jb-container">
+    <div id="jb-header">
+        <h1 class="display-6" tabindex="0">{{product.name}}</h1>
+    </div>
+    <div id="jb-content">
+        <h2>남성의류 / 상의 / 반팔티셔츠</h2>
+        <img src="{{product.image.url}}" width="100%" tabindex="0"> <br>
+        <div class="result">
+            <form>
+                <input onclick="analyze('http://59.26.44.137:8001{{product.image.url}}')" value="이미지분석하기"
+                    type="button" class="floating_element">
+            </form>
+            <br>
+            <textarea id="messageTextArea" rows="3" class="floating_element" cols="20" readonly>...</textarea>
+        </div>
+    </div>
+
+    <div id="jb-sidebar">
+        <h5 tabindex="0"><span class="badge badge-secondary">상세설명</span>{{product.description|linebreaks}}</h5>
+        <p tabindex="0"><span class="badge badge-secondary">가격</span> {{product.price}}</p>
+    </div>
+    
+    <div id="jb-sidebar">            
+        <form action="{% url 'cart:product_add' product.id %}" method="post" tabindex="0">
+            {{add_to_cart}}
+            {% csrf_token %}
+            <input type="submit" class="btn btn-primary btn-sm" value="카트에 넣기">
+        </form>
+        <br>
+    </div>
+
+    <!-- <div id="jb-sidebar">
+        <select id="select-bar", name = "사이즈" >
+            <option value ="90">90</option>
+            <option value ="90">95</option>
+            <option value ="90">100</option>
+            <option value ="90">105</option>
+            <option value ="90">110</option>
+        </select>
+        <button id="bag-button">
+            장바구니
+        </button>
+    </div> -->
+
+    <div id="jb-footer">
+      <!-- <p>Copyright</p> -->
+    </div>
+ </div>
+
+<!-- 
 
 <div class="container">
     <div class="row">
-        <div class="col-4">
-            <img src="{{product.image.url}}" width="100%" tabindex="0"> <br>
-            <div class="result">
-                <form>
-                    <input onclick="analyze('http://59.26.44.137:8001{{product.image.url}}')" value="이미지분석하기"
-                        type="button" class="floating_element">
-                </form>
-                <br>
-                <textarea id="messageTextArea" rows="3" class="floating_element" cols="20" readonly>...</textarea>
-            </div>
-        </div>
-        <div class="col">
-            <h1 class="display-6" tabindex="0">{{product.name}}</h1>
-
-            <p tabindex="0"><span class="badge badge-secondary">가격</span> {{product.price}}</p>
+        
+        <div class="col">            
             <form action="{% url 'cart:product_add' product.id %}" method="post" tabindex="0">
                 {{add_to_cart}}
                 {% csrf_token %}
                 <input type="submit" class="btn btn-primary btn-sm" value="카트에 넣기">
             </form>
             <br>
-            <h5 tabindex="0"><span class="badge badge-secondary">상세설명</span>{{product.description|linebreaks}}</h5>
         </div>
+
     </div>
 
-</div>
+</div> -->
 
 {% endblock %}

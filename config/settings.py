@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.naver",
     "cart",
     "home",
+    "category_page",
 ]
 
 MIDDLEWARE = [

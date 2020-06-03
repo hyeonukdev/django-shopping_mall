@@ -1,45 +1,70 @@
 {% extends 'base.html' %}
-{% block title %}쇼핑몰{% endblock %}
+{% block home_style %}
+<style>
+  #jb-container {
+    width: auto;
+    height: auto;
+    margin: 0px auto;
+    padding: 0px;
+    border: 1px solid #bcbcbc;
+  }
+
+  #jb-header {
+    padding: 20px;
+    margin-bottom: 0px;
+    border: 1px solid #bcbcbc;
+  }
+
+  #jb-content {
+    width: 100%;
+    padding: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border: 1px solid #bcbcbc;
+  }
+
+  #jb-footer {
+    clear: both;
+    padding: 20px;
+    border: 1px solid #bcbcbc;
+  }
+</style>
+{% endblock %}
+
 {% block content %}
-
-
-<div class="row">
-    <div class="col-2">
-        <div class="list-group">
-            <a href="/" class="list-group-item {% if not current_category %}active{% endif %}">카테고리</a>
-            {% for c in categories %}
-            <a href="{{c.get_absolute_url}}"
-                class="list-group-item {% if current_category.slug == c.slug %}active{% endif %}">{{c.name}}</a>
-            {% endfor %}
-        </div>
+<div id="jb-container">
+  <div id="jb-content">
+    <div style="margin-bottom: 30px;">
+        <font size="5em" color="black" tabindex="0">
+            남성의류 / 상의 / 반팔 티셔츠
+        </font>
     </div>
+    
 
-
-    <div class="col">
-        <div class="alert alert-info" role="alert" tabindex="0">
-            {% if current_category %}{{current_category.name}}{% else %}모든 물품{% endif %}
+    <div class="row">
+      {% for product in products %}
+      
+      {% if '반팔티' in product.name %}
+      <div class="col-6">
+        <div class="card" style="width: 100%;">
+          <font size="6px" color="black" style="margin-left: 20px;" tabindex="0">
+            {{forloop.counter}}
+          </font>
+          <a href="{{product.get_absolute_url}}">
+            <img class="card-img-top" src="{{product.image.url}}" alt="Product Image">
+          </a>
+          <div class="card-body">
+            <span>
+              <h5 class="card-title" tabindex="0">{{product.name}}</h5>
+            </span>
+            <span class="badge badge-secondary" tabindex="0">{{product.price}}원</span>
+          </div>
         </div>
-        <div class="row">
-            {% for product in products %}
-
-            <div class="col-4">
-                <div class="card">
-                    <img class="card-img-top" src="{{product.image.url}}" alt="Product Image" tabindex="0">
-                    <div class="card-body">
-                        <h5 class="card-title" tabindex="0">{{product.name}}</h5>
-                        <p class="card-text" tabindex="0">{{product.description}} <span
-                                class="badge badge-secondary">{{product.price}}원</span></p>
-                        <a href="{{product.get_absolute_url}}" class="btn btn-primary">자세히보기</a>
-                    </div>
-                </div>
-                <br>
-            </div>
-
-
-            {% endfor %}
-        </div>
+        <br>
+      </div>
+      {% endif %}      
+      {% endfor %}
     </div>
+  </div>
 </div>
-
-
 {% endblock %}
