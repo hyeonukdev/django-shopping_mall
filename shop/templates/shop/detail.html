@@ -50,6 +50,17 @@
         width: 300px;
         padding: 20px;
     }
+    .thumb {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    }
+
+    .thumb_img {
+        width: 80%;
+        height: 80%;
+    }
+
 </style>
 {% endblock %}
 
@@ -62,17 +73,17 @@
     <div id="jb-content">
         <h4 tabindex="0">{{product.category}} </h4>
 
-        <div align="center">
-            <img src="{{product.image.url}}" width="400px" height="500px" tabindex="0"> <br>
+        <div class="thumb" align="center">
+            <img class="thumb_img" src="{{product.image.url}}" tabindex="0"> <br>
         </div>
         <div class="result" align="center">
             <br>
             <form>
-                <input onclick="analyze('http://59.26.44.137:8001{{product.image.url}}')" value="이미지분석하기" type="button"
+                <input class="thumb_img" onclick="analyze('http://59.26.44.137:8001{{product.image.url}}')" value="이미지분석하기" type="button"
                     class="floating_element">
             </form>
             <br>
-            <textarea id="messageTextArea" rows="3" class="floating_element" cols="20" readonly>...</textarea>
+            <textarea class="thumb_img" id="messageTextArea" rows="3" class="floating_element" cols="20" readonly>...</textarea>
         </div>
     </div>
 
@@ -82,9 +93,12 @@
     </div>
 
     <div id="jb-sidebar">
-        <form action="{% url 'cart:product_add' product.id %}" method="post" tabindex="0">
-            {{add_to_cart}}
+        <form action="{% url 'cart:product_add' product.id %}" method="post" tabindex="0" class="thumb_img">
+            <!-- {{add_to_cart}} -->
             {% csrf_token %}
+            <label for="id_제품수량">제품수량</label>
+            <input type="number" name="제품수량" value="1" required id="id_제품수량" class="thumb_img">
+            <br>
             <input type="submit" class="btn btn-primary btn-sm" value="카트에 넣기">
         </form>
         <br>

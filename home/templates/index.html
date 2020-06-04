@@ -32,8 +32,18 @@
     max-height: 100%;
     /* width: 100px;
     height: 100px; */
-
   }
+  .thumb{
+    width: px;
+    height: px;
+    overflow: hidden;
+  }
+
+  .thumb_img{
+    width: 100%;
+    height: 100%;
+  }
+  
 </style>
 {% endblock %}
 
@@ -48,14 +58,17 @@
     <div class="row">
       <!-- random_product 3개 배열 -->
       {% for product in random_product %}
-      <div class="col-4" style="width: 100px;">
-        <div class="card" style="width: 90%;">
+      <!-- <div style="height: 100px;"> -->
+      <div class="col-4">
+        <!-- <div class="card" style="width: 90%;"> -->
+          <div style="max-height: 100%;">
           <font size="6px" color="black" style="margin-left: 20px;" tabindex="0">
             {{forloop.counter}}위
           </font>
           <div align="center">
-            <a href="{{product.get_absolute_url}}" tabindex="-1">
-              <img id="img_size" class="card-img-top" src="{{product.image.url}}" alt="Product Image" tabindex="0">
+            <a class="thumb" href="{{product.get_absolute_url}}" tabindex="-1">
+              <!-- <img id="img_size" class="card-img-top" src="{{product.image.url}}" alt="Product Image" tabindex="0"> -->
+              <img id="img_size" class="thumb_img" src="{{product.image.url}}" alt="Product Image" tabindex="0">
             </a>
           </div>
           <div class="card-body">
