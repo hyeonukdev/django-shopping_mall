@@ -70,10 +70,16 @@
       </ul>
     </div>
   </nav>
-  <div class="container">
-    {% block content %}
-    {% endblock %}
+  <!-- <div align="center">
+    <div style="width: 90%; height: 100;"> -->
+      <div  class="container"> 
+        {% block content %}
+        {% endblock %}
+      <!-- </div> -->
+
   </div>
+
+
   </div>
 
   {% block category_content %}
@@ -127,7 +133,7 @@
     }
 
     var flag = false;
-    document.addEventListener("keyup", function (e) {
+    document.addEventListener("keyup", function (e) {    
 
       if (e.keyCode == 17) { // ctrl
         if (flag)
@@ -145,30 +151,15 @@
         }
         // voice
         //alert(tts);
-        //speech(tts);
-        if (tts.indexOf("이미지분석하기") != -1) {
-          speech(tts);
-          speech("엔터를 누르면 이미지를 분석할 수 있습니다.");
-        } else {
-          speech(tts);
-        }
+        speech(tts);
 
         // 이미지객체 검출
-<<<<<<< HEAD
         var attr = e.target.nodeName;
         //alert(attr);
         if (attr == 'IMG') {
           //alert('이미지');
           speech('이미지입니다');
         }
-=======
-        //var attr = e.target.nodeName;
-        //alert(attr);
-        //if (attr == ' ') {
-        //  alert('이미지');
-        //  speech('이미지입니다');
-        //}
->>>>>>> 207062fb23321257158bf3121dc5a742b1e2e76c
       }
     });
   </script>

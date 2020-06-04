@@ -2,9 +2,9 @@
 {% block home_style %}
 <style>
   #jb-container {
-    width: auto;
+    width: 100%;
     height: auto;
-    margin: 0px auto;
+    margin: 0px;
     padding: 0px;
     border: 1px solid #bcbcbc;
   }
@@ -28,8 +28,11 @@
     border: 1px solid #bcbcbc;
   }
   #img_size{
-    width : 300px;
-    height: 400px;
+    max-width: 100%;
+    max-height: 100%;
+    /* width: 100px;
+    height: 100px; */
+
   }
 </style>
 {% endblock %}
@@ -45,14 +48,14 @@
     <div class="row">
       <!-- random_product 3개 배열 -->
       {% for product in random_product %}
-      <div class="col-4">
-        <div class="card" style="width: 100%;">
+      <div class="col-4" style="width: 100px;">
+        <div class="card" style="width: 90%;">
           <font size="6px" color="black" style="margin-left: 20px;" tabindex="0">
             {{forloop.counter}}위
           </font>
-          <div align="center" >
+          <div align="center">
             <a href="{{product.get_absolute_url}}" tabindex="-1">
-              <img id = "img_size" class="card-img-top" src="{{product.image.url}}" alt="Product Image" tabindex="0" >
+              <img id="img_size" class="card-img-top" src="{{product.image.url}}" alt="Product Image" tabindex="0">
             </a>
           </div>
           <div class="card-body">
