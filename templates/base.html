@@ -17,6 +17,7 @@
   </script>
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
+
   {% block script %}
   {% endblock %}
 
@@ -126,19 +127,16 @@
     }
 
     var flag = false;
-    var init = false;
-    document.addEventListener("keydown", function (e) {
-      if (e.keyCode == 9) { // tab
-        init = true;
-      }
+    document.addEventListener("keyup", function (e) {    
 
-      if (e.keyCode == 17 && init == true) { // ctrl
+      if (e.keyCode == 17) { // ctrl
         if (flag)
           flag = false;
         else
           flag = true;
       }
       if (e.keyCode == 9 && flag == true) { // tab
+
         // tts 대상 검출
         var tts = e.target.innerText;
         // target.value 값

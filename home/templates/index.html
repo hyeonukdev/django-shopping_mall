@@ -27,6 +27,10 @@
     padding: 20px;
     border: 1px solid #bcbcbc;
   }
+  #img_size{
+    width : 300px;
+    height: 400px;
+  }
 </style>
 {% endblock %}
 
@@ -46,8 +50,8 @@
           <font size="6px" color="black" style="margin-left: 20px;" tabindex="0">
             {{forloop.counter}}위
           </font>
-          <a href="{{product.get_absolute_url}}">
-            <img class="card-img-top" src="{{product.image.url}}" alt="Product Image">
+          <a href="{{product.get_absolute_url}}" align="center">
+            <img id = "img_size" class="card-img-top" src="{{product.image.url}}" alt="Product Image">
           </a>
           <div class="card-body">
             <span>
