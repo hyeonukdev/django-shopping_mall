@@ -134,6 +134,16 @@
 
     var flag = false;
     document.addEventListener("keyup", function (e) {
+      // enter 누르면 이미지 일시 링크이동
+      if (e.keyCode == 13) {
+        //var attr = e.target.nodeName;
+        var tag = e.target.parentNode.nodeName;
+        var link = e.target.parentNode;
+        //alert(attr);
+        if (tag == 'A') {
+          location.href = link;
+        }
+      }
 
       if (e.keyCode == 17) { // ctrl
         if (flag)
@@ -150,14 +160,14 @@
           var tts = e.target.value;
         }
 
-          // 이미지객체 검출
-          var attr = e.target.nodeName;
+        // 이미지객체 검출
+        var attr = e.target.nodeName;
         //alert(attr);
         if (attr == 'IMG') {
           //alert('이미지');
           speech('이미지입니다');
         }
-        
+
         // voice
         //alert(tts);
         if (tts.indexOf("이미지분석하기") != -1) {
