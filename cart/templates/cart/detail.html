@@ -22,8 +22,8 @@
         {% with product=item.product %}
         <tr>
             <th scope="row" >
-                <a href="{{ product.get_absolute_url }}">
-                    <img src="{{ product.image.url }}" class="img-thumbnail" tabindex="0" width="100">
+                <a href="{{ product.get_absolute_url }}"  tabindex="-1">
+                    <img src="{{ product.image.url }}" class="img-thumbnail" width="100px" tabindex="0">         
                 </a>
             </th>
             <td tabindex="0">{{ product.name }}</td>
