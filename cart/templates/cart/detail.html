@@ -21,9 +21,15 @@
         {% for item in cart %}
         {% with product=item.product %}
         <tr>
+<<<<<<< HEAD
             <th scope="row" >
                 <a href="{{ product.get_absolute_url }}"  tabindex="-1">
                     <img src="{{ product.image.url }}" class="img-thumbnail" width="100px" tabindex="0">         
+=======
+            <th scope="row">
+                <a href="{{ product.get_absolute_url }}">
+                    <img src="{{ product.image.url }}" class="img-thumbnail" tabindex="0" width="100">
+>>>>>>> 207062fb23321257158bf3121dc5a742b1e2e76c
                 </a>
             </th>
             <td tabindex="0">{{ product.name }}</td>

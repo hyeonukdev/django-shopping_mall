@@ -127,7 +127,7 @@
     }
 
     var flag = false;
-    document.addEventListener("keyup", function (e) {    
+    document.addEventListener("keyup", function (e) {
 
       if (e.keyCode == 17) { // ctrl
         if (flag)
@@ -145,15 +145,30 @@
         }
         // voice
         //alert(tts);
-        speech(tts);
+        //speech(tts);
+        if (tts.indexOf("이미지분석하기") != -1) {
+          speech(tts);
+          speech("엔터를 누르면 이미지를 분석할 수 있습니다.");
+        } else {
+          speech(tts);
+        }
 
         // 이미지객체 검출
+<<<<<<< HEAD
         var attr = e.target.nodeName;
         //alert(attr);
         if (attr == 'IMG') {
           //alert('이미지');
           speech('이미지입니다');
         }
+=======
+        //var attr = e.target.nodeName;
+        //alert(attr);
+        //if (attr == ' ') {
+        //  alert('이미지');
+        //  speech('이미지입니다');
+        //}
+>>>>>>> 207062fb23321257158bf3121dc5a742b1e2e76c
       }
     });
   </script>
