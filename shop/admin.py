@@ -17,6 +17,7 @@ class ProductAdmin(admin.ModelAdmin):
         "stock",
         "available_display",
         "available_order",
+        "image",
         "created",
         "updated",
     ]
