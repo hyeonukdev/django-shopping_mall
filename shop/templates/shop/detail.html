@@ -50,17 +50,17 @@
         width: 300px;
         padding: 20px;
     }
+
     .thumb {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
     }
 
     .thumb_img {
-        width: 80%;
-        height: 80%;
+        width: 100%;
+        height: 100%;
     }
-
 </style>
 {% endblock %}
 
@@ -79,11 +79,12 @@
         <div class="result" align="center">
             <br>
             <form>
-                <input class="thumb_img" onclick="analyze('http://59.26.44.137:8001{{product.image.url}}')" value="이미지분석하기" type="button"
-                    class="floating_element">
+                <input class="thumb_img" onclick="analyze('http://59.26.44.137:8001{{product.image.url}}')"
+                    value="이미지분석하기" type="button" class="floating_element">
             </form>
             <br>
-            <textarea class="thumb_img" id="messageTextArea" rows="3" class="floating_element" cols="20" readonly>...</textarea>
+            <textarea class="thumb_img" id="messageTextArea" rows="3" class="floating_element" cols="20"
+                readonly>이미지분석 결과창입니다.</textarea>
         </div>
     </div>
 
