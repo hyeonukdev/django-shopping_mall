@@ -149,6 +149,14 @@
         if (tts == '') {
           var tts = e.target.value;
         }
+
+          // 이미지객체 검출
+          var attr = e.target.nodeName;
+        //alert(attr);
+        if (attr == 'IMG') {
+          alert('이미지');
+          speech('이미지입니다');
+        }
         
         // voice
         //alert(tts);
@@ -157,14 +165,6 @@
           speech("엔터를 누르면 이미지를 분석할 수 있습니다");
         } else {
           speech(tts);
-        }
-
-        // 이미지객체 검출
-        var attr = e.target.nodeName;
-        //alert(attr);
-        if (attr == 'IMG') {
-          alert('이미지');
-          speech('이미지입니다');
         }
 
       }
