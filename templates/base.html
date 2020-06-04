@@ -126,17 +126,14 @@
     }
 
     var flag = false;
-    var init = false;
+    var count = 0;
     document.addEventListener("keydown", function (e) {
-      if (e.keyCode == 9) { // tab
-        init = true;
-      }
-
-      if (e.keyCode == 17 && init == true) { // ctrl
-        if (flag)
-          flag = false;
-        else
-          flag = true;
+      if (e.keyCode == 17 && count==0) { // ctl
+        flag = true;
+        count ++;
+      }else if (e.keyCode == 17 && count==1) { // ctl
+        flag = false;
+        count --;
       }
 
       if (e.keyCode == 9 && flag == true) { // tab
