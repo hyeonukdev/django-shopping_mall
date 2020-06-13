@@ -50,7 +50,8 @@
 </table>
 
 <p class="text-right">
-    <a href='{% url "category_page:categories" %}' class="btn btn-secondary">계속 쇼핑하기</a>
-    <a href="#" class="btn btn-secondary">주문하기</a>
+    <!-- 6.4.3. 적절한 링크 텍스트 -->
+    <a href='{% url "category_page:categories" %}' title="카테고리 페이지로 이동"class="btn btn-secondary">계속 쇼핑하기</a>
+    <a href="#" title="주문 페이지로 이동" class="btn btn-secondary">주문하기</a>
 </p>
 {% endblock %}
