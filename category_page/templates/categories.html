@@ -25,11 +25,7 @@
         border: 1px solid #bcbcbc;
     }
 
-    /* 포커스되면 변경 css */
-    .tab-focus:focus {
-        background-color: black;
-        border: 2px solid black;
-    }
+
 </style>
 
 <script type="text/javascript">
@@ -42,14 +38,14 @@
         var man_clothes_array = ['모자', '상의', '하의', '신발'];
         var man_clothes_detail_array = ['hat', 'shirt', 'pants', 'shoes'];
 
-        // 5.3.4. 콘텐츠 간의 구분
-        middle.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue tab-focus\" >" +
+        // 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4. 콘텐츠 간의 구분
+        middle.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue tab_focus_darkblue mouse_visited_darkblue\" >" +
             "<font size=\"5em\" color=\"white\" tabindex=\"-1\" >중분류</font>";
 
         for (var i = 0; i < man_clothes_array.length; i++) {
             middle.innerHTML += "<button onclick = \"" + man_clothes_detail_array[i] +
-                // 5.3.4. 콘텐츠 간의 구분
-                "()\" class=\"btn btn-secondary ctrl_hsl_gray tab-focus\">" + man_clothes_array[i] + "</button>";
+                // 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4. 콘텐츠 간의 구분
+                "()\" class=\"btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue\">" + man_clothes_array[i] + "</button>";
             var middle = document.getElementById("catal2");
         }
 
@@ -59,12 +55,12 @@
         var right = document.getElementById("catal3");
         right.innerHTML = '';
 
-        // 5.3.4. 콘텐츠 간의 구분
-        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue tab-focus\" >" +
+        // 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4. 콘텐츠 간의 구분
+        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue tab_focus_darkblue mouse_visited_darkblue\" >" +
             "<font size=\"5em\" color=\"white\" tabindex=\"-1\">소분류</font>";
 
-        // 5.3.4. 콘텐츠 간의 구분
-        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_gray tab-focus\">서비스 준비 중 입니다.</button>";
+        // 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4. 콘텐츠 간의 구분
+        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue\">서비스 준비 중 입니다.</button>";
     }
 
     function shirt() {
@@ -74,13 +70,13 @@
         var shirt_array = ['반팔 티셔츠', '남방', '가디건', '티셔츠'];
         var shirt_detail_array = ['short_shirt', 'nambang', 'cardigan', 't_shirt'];
 
-        // 5.3.4. 콘텐츠 간의 구분
-        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue tab-focus\" >" +
+        // 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4. 콘텐츠 간의 구분
+        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue tab_focus_darkblue mouse_visited_darkblue\" >" +
             "<font size=\"5em\" color=\"white\" tabindex=\"-1\">소분류</font>";
 
         for (var i = 0; i < shirt_array.length; i++) {
             right.innerHTML += "<button onclick = \"" + shirt_detail_array[i] +
-                "()\" class=\"btn btn-secondary ctrl_hsl_gray tab-focus\">" +
+                "()\" class=\"btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue\">" +
                 shirt_array[i] + "</button>";
             var right = document.getElementById("catal3");
         }
@@ -91,36 +87,36 @@
         var right = document.getElementById("catal3");
         right.innerHTML = '';
 
-        // 5.3.4. 콘텐츠 간의 구분
-        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue tab-focus\" >" +
+        // 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4. 콘텐츠 간의 구분
+        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue tab_focus_darkblue mouse_visited_darkblue\" >" +
             "<font size=\"5em\" color=\"white\" tabindex=\"-1\">소분류</font>";
 
-        // 5.3.4. 콘텐츠 간의 구분
-        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_gray tab-focus\">서비스 준비 중 입니다.</button>";
+        // 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4. 콘텐츠 간의 구분
+        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue\">서비스 준비 중 입니다.</button>";
     }
 
     function shoes() {
         var right = document.getElementById("catal3");
         right.innerHTML = '';
 
-        // 5.3.4. 콘텐츠 간의 구분
-        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue tab-focus\" >" +
+        // 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4. 콘텐츠 간의 구분
+        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue tab_focus_darkblue mouse_visited_darkblue\" >" +
             "<font size=\"5em\" color=\"white\" tabindex=\"-1\">소분류</font>";
 
-        // 5.3.4. 콘텐츠 간의 구분
-        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_gray tab-focus\">서비스 준비 중 입니다.</button>";
+        // 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4. 콘텐츠 간의 구분
+        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue\">서비스 준비 중 입니다.</button>";
     }
 
     function sorry() {
         var right = document.getElementById("catal2");
         right.innerHTML = '';
 
-        // 5.3.4. 콘텐츠 간의 구분
-        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue tab-focus\" >" +
+        // 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4. 콘텐츠 간의 구분
+        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue tab_focus_darkblue mouse_visited_darkblue\" >" +
             "<font size=\"5em\" color=\"white\" tabindex=\"-1\">중분류</font>";
 
-        // 5.3.4. 콘텐츠 간의 구분
-        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_gray tab-focus\" >서비스 준비 중 입니다.</button>";
+        // 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4. 콘텐츠 간의 구분
+        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue\" >서비스 준비 중 입니다.</button>";
     }
 
     function short_shirt() {
@@ -150,19 +146,19 @@
 
     <div class="btn-group-vertical catal" role="group" aria-label="Button group with nested dropdown">
 
-        <!-- 5.3.4. 콘텐츠 간의 구분 -->
-        <button type="button" class="btn btn-secondary ctrl_hsl_blue tab-focus">
+        <!-- 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4. 콘텐츠 간의 구분 -->
+        <button type="button" class="btn btn-secondary ctrl_hsl_blue tab_focus_darkblue mouse_visited_darkblue">
             <font size="5em" color="white" tabindex="-1">
                 대분류
             </font>
-            <!-- 5.3.4. 콘텐츠 간의 구분 -->
+            <!-- 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4. 콘텐츠 간의 구분 -->
         </button>
-        <button type="button" class="btn btn-secondary ctrl_hsl_gray tab-focus" onclick="man_clothes()">남성의류</button>
-        <button type="button" class="btn btn-secondary ctrl_hsl_gray tab-focus" onclick="sorry()">여성의류</button>
-        <button type="button" class="btn btn-secondary ctrl_hsl_gray tab-focus" onclick="sorry()">생필품</button>
-        <button type="button" class="btn btn-secondary ctrl_hsl_gray tab-focus" onclick="sorry()">전자 기기</button>
-        <button type="button" class="btn btn-secondary ctrl_hsl_gray tab-focus" onclick="sorry()">식품</button>
-        <button type="button" class="btn btn-secondary ctrl_hsl_gray tab-focus" onclick="sorry()">시각장애인 용품</button>
+        <button type="button" class="btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue" onclick="man_clothes()">남성의류</button>
+        <button type="button" class="btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue" onclick="sorry()">여성의류</button>
+        <button type="button" class="btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue" onclick="sorry()">생필품</button>
+        <button type="button" class="btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue" onclick="sorry()">전자 기기</button>
+        <button type="button" class="btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue" onclick="sorry()">식품</button>
+        <button type="button" class="btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue" onclick="sorry()">시각장애인 용품</button>
     </div>
 
     <div id="catal2" class="btn-group-vertical catal" role="group" aria-label="Button group with nested dropdown">

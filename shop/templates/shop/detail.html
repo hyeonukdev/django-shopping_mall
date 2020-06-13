@@ -79,8 +79,9 @@
         <div class="result" align="center">
             <br>
             <form>
-                <input class="thumb_img" onclick="analyze('http://59.26.44.137:8001{{product.image.url}}')"
-                    value="이미지분석하기" type="button" class="floating_element">
+                <!-- 5.3.3 텍스트 콘텐츠의 명도 대비 -->
+                <input class="thumb_img tab_focus_darkblue mouse_visited_darkblue" onclick="analyze('http://59.26.44.137:8001{{product.image.url}}')"
+                    value="이미지분석하기" type="button" class="floating_element ">
             </form>
             <br>
             <textarea class="thumb_img" id="messageTextArea" rows="3" class="floating_element" cols="20"
@@ -100,8 +101,8 @@
             <label for="id_제품수량">제품수량</label>
             <input type="number" name="제품수량" value="1" required id="id_제품수량" class="thumb_img">
             <br>
-            <!-- 6.4.3 적절한 링크 텍스트 -->
-            <input type="submit" title="장바구니로 이동" class="btn btn-primary btn-sm" value="장바구니에 넣기">
+            <!-- 5.3.3 텍스트 콘텐츠의 명도 대비, 6.4.3 적절한 링크 텍스트 -->
+            <input type="submit" title="장바구니로 이동" class="btn btn-primary btn-sm tab_focus_darkblue mouse_visited_darkblue ctrl_hsl_skyblue" value="장바구니에 넣기">
         </form>
         <br>
     </div>

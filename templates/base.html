@@ -19,7 +19,7 @@
   </script>
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
-  <!-- 5.3.4 콘텐츠 간의 구분 -->
+  <!-- 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4 콘텐츠 간의 구분 -->
   <style>
     .ctrl_hsl_gray {
       background-color: hsl(245, 6%, 33%);
@@ -30,6 +30,37 @@
       background-color: hsl(240, 100%, 33%);
       border: 2px solid black;
     }
+
+    .ctrl_hsl_skyblue {
+      background-color: hsl(190, 81%, 70%);
+      color : black;
+    }
+
+    .tab_focus_green:focus {
+        background-color:hsl(119, 34%, 50%);
+        color:white
+    }
+
+    .mouse_visited_green:visited{
+      background-color:hsl(119, 34%, 50%);
+      color:white
+    }
+
+    .tab_focus_darkblue:focus {
+        background-color: hsl(240, 65%, 12%);
+        color : white;
+    }
+
+    .mouse_visited_darkblue:visited{
+      background-color: hsl(240, 65%, 12%);
+      color:white
+    }
+
+    .black_font_color{
+      background-color: hsl(0,0%, 90%);
+      color : black;
+    }
+
   </style>
 
   {% block script %}
@@ -62,18 +93,21 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav justify-content-end">
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'category_page:categories' %}">카테고리</a>
+            <!-- 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4 콘텐츠 간의 구분 -->
+          <a class="nav-link btn btn-outline-success tab_focus_green black_font_color" href="{% url 'category_page:categories' %}">카테고리</a>
         </li>
         <li class="nav-item">
           {% if user.is_authenticated %}
-          <a class="nav-link" href="{% url 'account_logout' %}">로그아웃</a>
+            <!-- 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4 콘텐츠 간의 구분 -->
+          <a class="nav-link btn btn-outline-success tab_focus_green black_font_color" href="{% url 'account_logout' %}">로그아웃</a>
           {% else %}
-          <a class="nav-link" href="{% url 'account_login' %}">로그인</a>
+            <!-- 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4 콘텐츠 간의 구분 -->
+          <a class="nav-link btn btn-outline-success tab_focus_green black_font_color" href="{% url 'account_login' %}">로그인</a>
           {% endif %}
         </li>
         <li class="nav-item ">
-          <!-- 6.4.3. 적절한 링크 텍스트  -->
-          <a class="nav-link btn btn-outline-success" title="장바구니로 이동" href="{% url 'cart:detail' %}">
+          <!-- 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4 콘텐츠 간의 구분, 6.4.3. 적절한 링크 텍스트  -->
+          <a class="nav-link btn btn-outline-success tab_focus_green black_font_color" title="장바구니로 이동" href="{% url 'cart:detail' %}">
             {% if cart|length > 0 %}
             총 {{cart|length}} 개의 물품
             {% else %}
