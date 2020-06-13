@@ -35,13 +35,15 @@
         // 분류 돌리기 위해서 나옴 위 : 버튼이름, 아래 : funtion()
         var man_clothes_array = ['모자', '상의', '하의', '신발'];
         var man_clothes_detail_array = ['hat', 'shirt', 'pants', 'shoes'];
-
-        middle.innerHTML += "<button class=\"btn btn-secondary\" style=\"background-color: blue;\">" +
+        
+        // 5.3.4. 콘텐츠 간의 구분
+        middle.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue\" >" +
             "<font size=\"5em\" color=\"white\" tabindex=\"0\">중분류</font>";
 
         for (var i = 0; i < man_clothes_array.length; i++) {
             middle.innerHTML += "<button onclick = \"" + man_clothes_detail_array[i] +
-                "()\" class=\"btn btn-secondary\">" + man_clothes_array[i] + "</button>";
+            // 5.3.4. 콘텐츠 간의 구분
+                "()\" class=\"btn btn-secondary ctrl_hsl_gray\">" + man_clothes_array[i] + "</button>";
             var middle = document.getElementById("catal2");
         }
 
@@ -51,10 +53,12 @@
         var right = document.getElementById("catal3");
         right.innerHTML = '';
 
-        right.innerHTML += "<button class=\"btn btn-secondary\" style=\"background-color: blue;\">" +
+        // 5.3.4. 콘텐츠 간의 구분
+        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue\" >" +
             "<font size=\"5em\" color=\"white\" tabindex=\"0\">소분류</font>";
 
-        right.innerHTML += "<button class=\"btn btn-secondary\">서비스 준비 중 입니다.</button>";
+        // 5.3.4. 콘텐츠 간의 구분
+        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_gray\">서비스 준비 중 입니다.</button>";
     }
 
     function shirt() {
@@ -64,11 +68,12 @@
         var shirt_array = ['반팔 티셔츠', '남방', '가디건', '티셔츠'];
         var shirt_detail_array = ['short_shirt', 'nambang', 'cardigan', 't_shirt'];
 
-        right.innerHTML += "<button class=\"btn btn-secondary\" style=\"background-color: blue;\">" +
+        // 5.3.4. 콘텐츠 간의 구분
+        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue\" >" +
             "<font size=\"5em\" color=\"white\" tabindex=\"0\">소분류</font>";
 
         for (var i = 0; i < shirt_array.length; i++) {
-            right.innerHTML += "<button onclick = \"" + shirt_detail_array[i] + "()\" class=\"btn btn-secondary\">" +
+            right.innerHTML += "<button onclick = \"" + shirt_detail_array[i] + "()\" class=\"btn btn-secondary ctrl_hsl_gray\">" +
                 shirt_array[i] + "</button>";
             var right = document.getElementById("catal3");
         }
@@ -79,29 +84,36 @@
         var right = document.getElementById("catal3");
         right.innerHTML = '';
 
-        right.innerHTML += "<button class=\"btn btn-secondary\" style=\"background-color: blue;\">" +
+        // 5.3.4. 콘텐츠 간의 구분
+        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue\" >" +
             "<font size=\"5em\" color=\"white\" tabindex=\"0\">소분류</font>";
 
-        right.innerHTML += "<button class=\"btn btn-secondary\">서비스 준비 중 입니다.</button>";
+        // 5.3.4. 콘텐츠 간의 구분
+        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_gray\">서비스 준비 중 입니다.</button>";
     }
 
     function shoes() {
         var right = document.getElementById("catal3");
         right.innerHTML = '';
 
-        right.innerHTML += "<button class=\"btn btn-secondary\" style=\"background-color: blue;\">" +
+        // 5.3.4. 콘텐츠 간의 구분
+        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue\" >" +
             "<font size=\"5em\" color=\"white\" tabindex=\"0\">소분류</font>";
 
-        right.innerHTML += "<button class=\"btn btn-secondary\">서비스 준비 중 입니다.</button>";
+        // 5.3.4. 콘텐츠 간의 구분
+        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_gray\">서비스 준비 중 입니다.</button>";
     }
 
     function sorry() {
         var right = document.getElementById("catal2");
         right.innerHTML = '';
 
-        right.innerHTML += "<button class=\"btn btn-secondary\" style=\"background-color: blue;\">" +
-            "<font size=\"5em\" color=\"white\" tabindex=\"0\">소분류</font>";
-        right.innerHTML += "<button class=\"btn btn-secondary\" >서비스 준비 중 입니다.</button>";
+        // 5.3.4. 콘텐츠 간의 구분
+        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue\" >" +
+            "<font size=\"5em\" color=\"white\" tabindex=\"0\">중분류</font>";
+
+        // 5.3.4. 콘텐츠 간의 구분
+        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_gray\" >서비스 준비 중 입니다.</button>";
     }
 
     function short_shirt() {
@@ -130,26 +142,30 @@
 <div>
 
     <div class="btn-group-vertical catal" role="group" aria-label="Button group with nested dropdown">
-
-        <button type="button" class="btn btn-secondary" style="background-color: blue;">
+        
+        <!-- 5.3.4. 콘텐츠 간의 구분 -->
+        <button type="button" class="btn btn-secondary ctrl_hsl_blue">
             <font size="5em" color="white" tabindex="0">
                 대분류
             </font>
+            <!-- 5.3.4. 콘텐츠 간의 구분 -->
         </button>
-        <button type="button" class="btn btn-secondary" onclick="man_clothes()">남성의류</button>
-        <button type="button" class="btn btn-secondary" onclick="sorry()">여성의류</button>
-        <button type="button" class="btn btn-secondary" onclick="sorry()">생필품</button>
-        <button type="button" class="btn btn-secondary" onclick="sorry()">전자 기기</button>
-        <button type="button" class="btn btn-secondary" onclick="sorry()">식품</button>
-        <button type="button" class="btn btn-secondary" onclick="sorry()">시각장애인 용품</button>
+        <button type="button" class="btn btn-secondary ctrl_hsl_gray" onclick="man_clothes()">남성의류</button>
+        <button type="button" class="btn btn-secondary ctrl_hsl_gray" onclick="sorry()">여성의류</button>
+        <button type="button" class="btn btn-secondary ctrl_hsl_gray" onclick="sorry()">생필품</button>
+        <button type="button" class="btn btn-secondary ctrl_hsl_gray" onclick="sorry()">전자 기기</button>
+        <button type="button" class="btn btn-secondary ctrl_hsl_gray" onclick="sorry()">식품</button>
+        <button type="button" class="btn btn-secondary ctrl_hsl_gray" onclick="sorry()">시각장애인 용품</button>
     </div>
 
     <div id="catal2" class="btn-group-vertical catal" role="group" aria-label="Button group with nested dropdown">
-        <button onclick="shirt()" class="btn btn-secondary">대 분류를 먼저 선택해주세요.</button>
+        <!-- 5.3.4. 콘텐츠 간의 구분 -->
+        <button onclick="shirt()" class="btn btn-secondary ctrl_hsl_blue">대 분류를 먼저 선택해주세요.</button>
     </div>
-
-    <div id="catal3" class="btn-group-vertical catal" role="group" aria-label="Button group with nested dropdown">
-        <button type="button" class="btn btn-secondary">중 분류를 먼저 선택해주세요.</button>
+    <!-- 5.3.4. 콘텐츠 간의 구분 -->
+    <div id="catal3" class="btn-group-vertical catal ctrl_hsl_blue" role="group" aria-label="Button group with nested dropdown">
+        <!-- 5.3.4. 콘텐츠 간의 구분 -->
+        <button type="button" class="btn btn-secondary ctrl_hsl_blue">중 분류를 먼저 선택해주세요.</button>
     </div>
 
 </div>
