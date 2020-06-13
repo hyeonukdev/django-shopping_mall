@@ -2,7 +2,6 @@ from django.shortcuts import render, get_object_or_404
 
 from .models import *
 
-
 # T-shirts
 def product_in_category(request, category_slug=None):
     current_category = None

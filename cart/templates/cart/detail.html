@@ -19,9 +19,9 @@
         {% for item in cart %}
         {% with product=item.product %}
         <tr>
-            <th scope="row" >
-                <a href="{{ product.get_absolute_url }}"  tabindex="-1">
-                    <img src="{{ product.image.url }}" class="img-thumbnail" width="100px" tabindex="0">         
+            <th scope="row">
+                <a href="{{ product.get_absolute_url }}" title="{{product.name}} 상품 상세 페이지로 이동" tabindex="-1">
+                    <img src="{{ product.image.url }}" class="img-thumbnail" width="100px" tabindex="0">
                 </a>
             </th>
             <td tabindex="0">{{ product.name }}</td>
@@ -30,10 +30,11 @@
                     {{ item.quantity_form.제품수량 }}
                     {{ item.quantity_form.is_update }}
                     <input type="submit" class="btn btn-primary" value="수정">
-                    <input type="button" class="btn btn-primary" value="제거" onclick="location.href='{% url 'cart:product_remove' product.id %}'">
+                    <input type="button" class="btn btn-primary" value="제거"
+                        onclick="location.href='{% url 'cart:product_remove' product.id %}'">
                     {% csrf_token %}
                 </form>
-                
+
             </td>
             <td class="num" tabindex="0">₩{{ item.price }}</td>
             <td class="num" tabindex="0">₩{{ item.total_price }}</td>
@@ -51,7 +52,7 @@
 
 <p class="text-right">
     <!-- 6.4.3. 적절한 링크 텍스트 -->
-    <a href='{% url "category_page:categories" %}' title="카테고리 페이지로 이동"class="btn btn-secondary">계속 쇼핑하기</a>
+    <a href='{% url "category_page:categories" %}' title="카테고리 페이지로 이동" class="btn btn-secondary">계속 쇼핑하기</a>
     <a href="#" title="주문 페이지로 이동" class="btn btn-secondary">주문하기</a>
 </p>
 {% endblock %}
