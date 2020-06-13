@@ -18,17 +18,17 @@
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
   </script>
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-  
+
   <!-- 5.3.4 콘텐츠 간의 구분 -->
   <style>
-    .ctrl_hsl_gray{
+    .ctrl_hsl_gray {
       background-color: hsl(245, 6%, 33%);
-      border : 2px solid black;
+      border: 2px solid black;
     }
 
-    .ctrl_hsl_blue{
+    .ctrl_hsl_blue {
       background-color: hsl(240, 100%, 33%);
-      border : 2px solid black;
+      border: 2px solid black;
     }
   </style>
 
@@ -62,7 +62,6 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav justify-content-end">
         <li class="nav-item">
-          <!-- <a class="nav-link" href="{% url 'shop:product_all' %}">카테고리</a> -->
           <a class="nav-link" href="{% url 'category_page:categories' %}">카테고리</a>
         </li>
         <li class="nav-item">
@@ -86,12 +85,9 @@
       </ul>
     </div>
   </nav>
-  <!-- <div align="center"> -->
-  <!-- <div style="width: 90%; height: 100;"> -->
   <div class="container">
     {% block content %}
     {% endblock %}
-    <!-- </div> -->
 
   </div>
 
@@ -229,17 +225,7 @@
         } else {
           alert('최대 확대입니다.');
         }
-      }
-      // else if( Browser.opera ) { 
-      // alert('오페라는 화면크기 기능을 지원하지 않습니다.\n브라우저 내의 확대/축소 기능을 이용하시기 바랍니다.'); 
-      // } 
-      // else if( Browser.safari || Browser.safari3 || Browser.mac  ) { 
-      // alert('사파리, 맥은 화면크기 기능을 지원하지 않습니다.\n브라우저 내의 확대/축소 기능을 이용하시기 바랍니다.'); 
-      // } 
-      // else if( Browser.firefox ) { 
-      // alert('파이어폭스는 화면크기 기능을 지원하지 않습니다.\n브라우저 내의 확대/축소 기능을 이용하시기 바랍니다.'); 
-      // } 
-      else {
+      } else {
         if (nowZoom < maxZoom) {
           nowZoom += step;
           document.body.style.position = "relative";
@@ -259,17 +245,7 @@
         } else {
           alert('최대 축소입니다.');
         }
-      }
-      // else if( Browser.opera ) { 
-      // alert('오페라는 화면크기 기능을 지원하지 않습니다.\n브라우저 내의 확대/축소 기능을 이용하시기 바랍니다.'); 
-      // } 
-      // else if( Browser.safari || Browser.safari3 || Browser.mac  ) { 
-      // alert('사파리, 맥은 화면크기 기능을 지원하지 않습니다.\n브라우저 내의 확대/축소 기능을 이용하시기 바랍니다.'); 
-      // } 
-      // else if( Browser.firefox ) { 
-      // alert('파이어폭스는 화면크기 기능을 지원하지 않습니다.\n브라우저 내의 확대/축소 기능을 이용하시기 바랍니다.'); 
-      // } 
-      else {
+      } else {
         if (nowZoom < maxZoom) {
           nowZoom -= step;
           document.body.style.position = "relative";
