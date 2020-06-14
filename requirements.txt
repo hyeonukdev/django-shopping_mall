@@ -1,4 +1,4 @@
-Django==2.1.5
+Django==2.2.13
 django-allauth==0.41.0
 PyMySQL==0.9.3
 dj-database-url==0.5.0
