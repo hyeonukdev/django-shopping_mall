@@ -5,7 +5,11 @@ from shop.models import Product
 from .forms import AddProductForm
 from .cart import Cart
 
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 
+
+@method_decorator(csrf_exempt)
 @require_POST
 def add(request, product_id):
     cart = Cart(request)

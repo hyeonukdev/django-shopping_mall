@@ -27,13 +27,15 @@
             <td tabindex="0">{{ product.name }}</td>
             <td>
                 <form action="{% url "cart:product_add" product.id %}" method="post">
+                    {% csrf_token %}
                     {{ item.quantity_form.제품수량 }}
                     {{ item.quantity_form.is_update }}
                     <!-- 5.3.3 텍스트 콘텐츠의 명도 대비 -->
-                    <input type="submit" class="btn btn-primary tab_focus_darkblue mouse_visited_darkblue ctrl_hsl_skyblue" value="수정">
-                    <input type="button" class="btn btn-primary tab_focus_darkblue mouse_visited_darkblue ctrl_hsl_skyblue" value="제거"
+                    <input type="submit"
+                        class="btn btn-primary tab_focus_darkblue mouse_visited_darkblue ctrl_hsl_skyblue" value="수정">
+                    <input type="button"
+                        class="btn btn-primary tab_focus_darkblue mouse_visited_darkblue ctrl_hsl_skyblue" value="제거"
                         onclick="location.href='{% url 'cart:product_remove' product.id %}'">
-                    {% csrf_token %}
                 </form>
 
             </td>
@@ -53,7 +55,8 @@
 
 <p class="text-right">
     <!-- 5.3.3 텍스트 콘텐츠의 명도 대비, 6.4.3. 적절한 링크 텍스트 -->
-    <a href='{% url "category_page:categories" %}' title="카테고리 페이지로 이동" class="btn btn-secondary black_font_color tab_focus_darkblue  ">계속 쇼핑하기</a>
+    <a href='{% url "category_page:categories" %}' title="카테고리 페이지로 이동"
+        class="btn btn-secondary black_font_color tab_focus_darkblue  ">계속 쇼핑하기</a>
     <a href="#" title="주문 페이지로 이동" class="btn btn-secondary black_font_color tab_focus_darkblue ">주문하기</a>
 </p>
 {% endblock %}
