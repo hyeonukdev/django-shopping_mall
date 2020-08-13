@@ -33,34 +33,74 @@
 
     .ctrl_hsl_skyblue {
       background-color: hsl(190, 81%, 70%);
-      color : black;
+      color: black;
     }
 
     .tab_focus_green:focus {
-        background-color:hsl(119, 34%, 50%);
-        color:white
+      background-color: hsl(119, 34%, 50%);
+      color: white
     }
 
-    .mouse_visited_green:visited{
-      background-color:hsl(119, 34%, 50%);
-      color:white
+    .mouse_visited_green:visited {
+      background-color: hsl(119, 34%, 50%);
+      color: white
     }
 
     .tab_focus_darkblue:focus {
-        background-color: hsl(240, 65%, 12%);
-        color : white;
-    }
-
-    .mouse_visited_darkblue:visited{
       background-color: hsl(240, 65%, 12%);
-      color:white
+      color: white;
     }
 
-    .black_font_color{
-      background-color: hsl(0,0%, 90%);
-      color : black;
+    .mouse_visited_darkblue:visited {
+      background-color: hsl(240, 65%, 12%);
+      color: white
     }
 
+    .black_font_color {
+      background-color: hsl(0, 0%, 90%);
+      color: black;
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .md_overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+    }
+
+    .md_content {
+      width: 20%;
+      position: relative;
+      padding: 50px 100px;
+      background-color: white;
+      text-align: center;
+      border-radius: 6px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.20), 0 6px 6px rgba(0, 0, 0, 0.20);
+    }
+
+    h1 {
+      margin: 0;
+      padding: 5px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .modal_text {
+      padding: 16px;
+    }
   </style>
 
   {% block script %}
@@ -93,25 +133,29 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav justify-content-end">
         <li class="nav-item">
-            <!-- 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4 콘텐츠 간의 구분 -->
-          <a class="nav-link btn btn-outline-success tab_focus_green black_font_color" href="{% url 'category_page:categories' %}">카테고리</a>
+          <!-- 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4 콘텐츠 간의 구분 -->
+          <a class="nav-link btn btn-outline-success tab_focus_green black_font_color"
+            href="{% url 'category_page:categories' %}">카테고리</a>
         </li>
         <li class="nav-item">
           {% if user.is_authenticated %}
-            <!-- 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4 콘텐츠 간의 구분 -->
-          <a class="nav-link btn btn-outline-success tab_focus_green black_font_color" href="{% url 'account_logout' %}">로그아웃</a>
+          <!-- 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4 콘텐츠 간의 구분 -->
+          <a class="nav-link btn btn-outline-success tab_focus_green black_font_color"
+            href="{% url 'account_logout' %}">로그아웃</a>
           {% else %}
-            <!-- 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4 콘텐츠 간의 구분 -->
-          <a class="nav-link btn btn-outline-success tab_focus_green black_font_color" href="{% url 'account_login' %}">로그인</a>
+          <!-- 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4 콘텐츠 간의 구분 -->
+          <a class="nav-link btn btn-outline-success tab_focus_green black_font_color"
+            href="{% url 'account_login' %}">로그인</a>
           {% endif %}
         </li>
         <li class="nav-item ">
           <!-- 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4 콘텐츠 간의 구분, 6.4.3. 적절한 링크 텍스트  -->
-          <a class="nav-link btn btn-outline-success tab_focus_green black_font_color" title="장바구니로 이동" href="{% url 'cart:detail' %}">
+          <a class="nav-link btn btn-outline-success tab_focus_green black_font_color" title="장바구니로 이동"
+            href="{% url 'cart:detail' %}">
             {% if cart|length > 0 %}
             총 {{cart|length}} 개의 물품
             {% else %}
-            장바구니가 비었음
+            장바구니로 이동
             {% endif %}
           </a>
         </li>
@@ -366,6 +410,26 @@
     }
   </script>
 
+  <script type="text/javascript">
+    <!--
+    //필요한 엘리먼트들을 선택한다.
+    const openButton = document.getElementById("open");
+    const modal = document.querySelector(".modal");
+    const overlay = modal.querySelector(".md_overlay");
+    const closeButton = modal.querySelector("button");
+    //동작함수
+    const openModal = () => {
+      modal.classList.remove("hidden");
+    }
+    const closeModal = () => {
+      modal.classList.add("hidden");
+    }
+    //클릭 이벤트
+    openButton.addEventListener("click", openModal);
+    closeButton.addEventListener("click", closeModal);
+    //
+    -->
+  </script>
 </body>
 
 </html>
