@@ -9,5 +9,7 @@ urlpatterns = [
     path("cart/", include("cart.urls")),
     path("shop/", include("shop.urls")),
     path("category_page/", include("category_page.urls")),
-    path("", include('home.urls')),    
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path("", include("home.urls")),
+]
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

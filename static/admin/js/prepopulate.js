@@ -30,20 +30,12 @@
             };
 
             prepopulatedField.data('_changed', false);
-<<<<<<< HEAD
-            prepopulatedField.change(function() {
-=======
             prepopulatedField.on('change', function() {
->>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
                 prepopulatedField.data('_changed', true);
             });
 
             if (!prepopulatedField.val()) {
-<<<<<<< HEAD
-                $(dependencies.join(',')).keyup(populate).change(populate).focus(populate);
-=======
                 $(dependencies.join(',')).on('keyup change focus', populate);
->>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
             }
         });
     };

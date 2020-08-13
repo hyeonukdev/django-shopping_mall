@@ -1,10 +1,6 @@
 The MIT License (MIT)
 
-<<<<<<< HEAD
 Copyright (c) 2012-2015 Kevin Brown, Igor Vaynberg, and Select2 contributors
-=======
-Copyright (c) 2012-2017 Kevin Brown, Igor Vaynberg, and Select2 contributors
->>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

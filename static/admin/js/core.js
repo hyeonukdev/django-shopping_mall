@@ -30,11 +30,7 @@ function removeChildren(a) {
 
 // ----------------------------------------------------------------------------
 // Find-position functions by PPK
-<<<<<<< HEAD
-// See http://www.quirksmode.org/js/findpos.html
-=======
 // See https://www.quirksmode.org/js/findpos.html
->>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
 // ----------------------------------------------------------------------------
 function findPosX(obj) {
     'use strict';
@@ -78,7 +74,6 @@ function findPosY(obj) {
 (function() {
     'use strict';
     Date.prototype.getTwelveHours = function() {
-<<<<<<< HEAD
         var hours = this.getHours();
         if (hours === 0) {
             return 12;
@@ -86,9 +81,6 @@ function findPosY(obj) {
         else {
             return hours <= 12 ? hours : hours - 12;
         }
-=======
-        return this.getHours() % 12 || 12;
->>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
     };
 
     Date.prototype.getTwoDigitMonth = function() {
@@ -115,7 +107,6 @@ function findPosY(obj) {
         return (this.getSeconds() < 10) ? '0' + this.getSeconds() : this.getSeconds();
     };
 
-<<<<<<< HEAD
     Date.prototype.getHourMinute = function() {
         return this.getTwoDigitHour() + ':' + this.getTwoDigitMinute();
     };
@@ -124,8 +115,6 @@ function findPosY(obj) {
         return this.getTwoDigitHour() + ':' + this.getTwoDigitMinute() + ':' + this.getTwoDigitSecond();
     };
 
-=======
->>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
     Date.prototype.getFullMonthName = function() {
         return typeof window.CalendarNamespace === "undefined"
             ? this.getTwoDigitMonth()
@@ -164,7 +153,6 @@ function findPosY(obj) {
         return result;
     };
 
-<<<<<<< HEAD
 // ----------------------------------------------------------------------------
 // String object extensions
 // ----------------------------------------------------------------------------
@@ -176,11 +164,6 @@ function findPosY(obj) {
         return new_string;
     };
 
-=======
-    // ----------------------------------------------------------------------------
-    // String object extensions
-    // ----------------------------------------------------------------------------
->>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
     String.prototype.strptime = function(format) {
         var split_format = format.split(/[.\-/]/);
         var date = this.split(/[.\-/]/);
@@ -188,7 +171,6 @@ function findPosY(obj) {
         var day, month, year;
         while (i < split_format.length) {
             switch (split_format[i]) {
-<<<<<<< HEAD
                 case "%d":
                     day = date[i];
                     break;
@@ -201,20 +183,6 @@ function findPosY(obj) {
                 case "%y":
                     year = date[i];
                     break;
-=======
-            case "%d":
-                day = date[i];
-                break;
-            case "%m":
-                month = date[i] - 1;
-                break;
-            case "%Y":
-                year = date[i];
-                break;
-            case "%y":
-                year = date[i];
-                break;
->>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
             }
             ++i;
         }
@@ -225,7 +193,6 @@ function findPosY(obj) {
     };
 
 })();
-<<<<<<< HEAD
 // ----------------------------------------------------------------------------
 // Get the computed style for and element
 // ----------------------------------------------------------------------------
@@ -243,5 +210,3 @@ function getStyle(oElm, strCssRule) {
     }
     return strValue;
 }
-=======
->>>>>>> e84629bf0de49523aeb8814977d16613497d0c14
