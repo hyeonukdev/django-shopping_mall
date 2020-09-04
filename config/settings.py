@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.naver",
+    "allauth.socialaccount.providers.google",
     "cart",
     "home",
     "category_page",
@@ -80,6 +81,14 @@ TEMPLATES = [
         },
     },
 ]
+
+# provider_google
+SOCIALACCOUNT_PROVIDERS = {
+    "google": {
+        "SCOPE": ["profile", "email",],
+        "AUTH_PARAMS": {"access_type": "online",},
+    }
+}
 
 # WSGI_APPLICATION = "config.wsgi.application"
 
