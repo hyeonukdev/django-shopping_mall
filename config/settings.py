@@ -82,13 +82,6 @@ TEMPLATES = [
     },
 ]
 
-# provider_google
-SOCIALACCOUNT_PROVIDERS = {
-    "google": {
-        "SCOPE": ["profile", "email",],
-        "AUTH_PARAMS": {"access_type": "online",},
-    }
-}
 
 # WSGI_APPLICATION = "config.wsgi.application"
 
@@ -172,3 +165,4 @@ LOGIN_REDIRECT_URL = "/"
 # db_from_env = dj_database_url.config(conn_max_age=500)
 # DATABASES["default"].update(db_from_env)
 
+ACCOUNT_EMAIL_VERIFICATION = "none"
