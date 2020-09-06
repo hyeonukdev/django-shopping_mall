@@ -1,0 +1,295 @@
+{% extends 'base.html' %}
+<!-- 6.4.2. 제목 제공 -->
+{% load socialaccount %}
+{% providers_media_js %}
+{% block title %}로그인{% endblock %}
+{% block login_style %}
+
+<style>
+    div#login_wrapper {
+        position: absolute;
+        border: 1px solid gray;
+        text-align: center;
+        width: 30%;
+        height: 60%;
+    }
+
+    .limiter {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .container-login100 {
+        width: 100%;  
+        min-height: 100vh;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+        position: relative;
+        background-color: #fff;
+    }
+
+    .wrap-login100 {
+        width: 500px;
+        background: #fff;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+        -moz-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+        -o-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+        -ms-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .login100-form-title {
+        font-family: JosefinSans-Bold;
+        font-size: 40px;
+        color: #fff;
+        line-height: 1.2;
+        text-align: center;
+
+        display: block;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-color: #000080;
+        padding-top: 50px;
+        padding-bottom: 39px;
+    }
+
+    .login100-form {
+        width: 100%;
+        position: relative;
+    }
+
+    .wrap-input100 {
+        width: 100%;
+        background-color: #fff;
+        border-radius: 27px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .validate-input {
+        position: relative;
+    }
+
+    .txt2 {
+        font-family: Ubuntu-Regular;
+        font-size: 15px;
+        color: #000080;
+        line-height: 1.4;
+    }
+
+    .container-login100-form-btn {
+        width: 100%;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .flex-col-c {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-direction: column;
+        -moz-flex-direction: column;
+        -ms-flex-direction: column;
+        -o-flex-direction: column;
+        flex-direction: column;
+        -ms-align-items: center;
+        align-items: center;
+    }
+
+    .txt1 {
+        font-family: Ubuntu-Regular;
+        font-size: 15px;
+        color: #999999;
+        line-height: 1.4;
+    }
+
+    .txt3 {
+        font-family: Ubuntu-Bold;
+        font-size: 15px;
+        color: #000080;
+        line-height: 1.4;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .input100 {
+        font-family: Ubuntu-Bold;
+        font-size: 15px;
+        color: #1b3815;
+        line-height: 1.2;
+
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 55px;
+        background: #ebebeb;
+        border-radius: 27px;
+        padding: 0 35px 0 35px;
+    }
+
+    .focus-input100 {
+        display: block;
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+        border-radius: 31px;
+        background-color: #ebebeb;
+        pointer-events: none;
+        
+        -webkit-transition: all 0.4s;
+        -o-transition: all 0.4s;
+        -moz-transition: all 0.4s;
+        transition: all 0.4s;
+    }
+
+    .login100-form-btn {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 20px;
+        width: 100%;
+        height: 50px;
+        background-color: #000080;
+        border-radius: 25px;
+
+        font-family: Ubuntu-Bold;
+        font-size: 20px;
+        color: #fff;
+        line-height: 1.2;
+        text-transform: uppercase;
+
+        -webkit-transition: all 0.4s;
+        -o-transition: all 0.4s;
+        -moz-transition: all 0.4s;
+        transition: all 0.4s;
+    }
+
+    .login100-form-btn2 {
+
+        justify-content: center;
+        align-items: center;
+        padding: 0 20px;
+        width: 100%;
+        height: 50px;
+        background-color: #000080;
+        border-radius: 25px;
+
+        font-family: Ubuntu-Bold;
+        font-size: 15px;
+        color: #fff;
+        line-height: 1.2;
+        text-transform: uppercase;
+
+        -webkit-transition: all 0.4s;
+        -o-transition: all 0.4s;
+        -moz-transition: all 0.4s;
+        transition: all 0.4s;
+    }
+
+    .p-l-55 {padding-left: 55px;}
+    .p-r-55 {padding-right: 55px;}
+    .p-t-178 {padding-top: 178px;}
+    .m-b-16 {margin-bottom: 16px;}
+    .p-t-13 {padding-top: 13px;}
+    .p-t-23 {padding-top: 23px;}
+    .p-b-23 {padding-bottom: 23px;}
+    .p-t-170 {padding-top: 50px;}
+    .p-b-40 {padding-bottom: 40px;}
+    .p-b-9 {padding-bottom: 9px;}
+
+    .log_btn{
+        width: 80px;
+        height: 80px;
+        border: 0;
+        background-color: #FFFFFF;
+    }
+
+    .log_btn_padding{
+        padding :30px;
+        text-align: center;
+    }
+
+    img{
+        max-width: 100%;
+        height: auto;
+    }
+
+</style>
+{% endblock %}
+
+{% block content %}
+<body>
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form class="login100-form p-l-55 p-r-55 p-t-178">
+					<span class="login100-form-title">
+						시각장애인 쇼핑몰
+					</span>
+
+					<div for ="id_login" class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+						<input class="input100" type="text" required id="id_login" name="username" placeholder="아이디">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div for ="id_password" class="wrap-input100 validate-input" data-validate = "Please enter password">
+						<input class="input100" type="password" required id ="id_password" name="pass" placeholder="비밀번호">
+						<span class="focus-input100"></span>
+					</div>
+
+                    <div class="container-login100-form-btn p-t-23">
+						<button class="login100-form-btn primaryAction" type="submit">로그인</button>
+                    </div>
+
+                    <div class="log_btn_padding">
+                        <button href="{%provider_login_url 'naver'%}" class="log_btn" type="button" class="btm_image" id="img_btn" title="네이버 로그인"><img src="https://clova-phinf.pstatic.net/MjAxODAzMjlfOTIg/MDAxNTIyMjg3MzM3OTAy.WkiZikYhauL1hnpLWmCUBJvKjr6xnkmzP99rZPFXVwgg.mNH66A47eL0Mf8G34mPlwBFKP0nZBf2ZJn5D4Rvs8Vwg.PNG/image.png"></button>
+                        <button href="{%provider_login_url 'google'%}" class="log_btn" type="button" class="btm_image" id="img_btn" title="구글 로그인"><img src="https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png"></button>
+                    </div>
+
+                    <div class="container-login100-form-btn p-b-23">
+                        <button class="login100-form-btn" type="button" onclick="location.href='/accounts/password/reset/'">아이디/비밀번호 찾기</button>
+                    </div>
+                    <div class="container-login100-form-btn p-b-23">
+                        <button class="login100-form-btn" type="button" onclick="location.href='/accounts/signup'">회원가입</button>
+					</div>
+
+					<div class="flex-col-c p-t-170 p-b-40">
+
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+{% endblock %}
