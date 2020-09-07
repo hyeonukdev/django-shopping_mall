@@ -165,7 +165,7 @@ def wlong_shirts_product_in_category(request, category_slug=None):
 #onepeace
 def onepeace_product_in_category(request, category_slug=None):
     current_category = None
-    categories = Category.objects.filter(name='여성원피스')
+    categories = Category.objects.filter(name='원피스')
     products = Product.objects.filter(available_display=True)
 
     if category_slug:
