@@ -29,6 +29,7 @@
 </style>
 
 <script type="text/javascript">
+     //남성
     function man_clothes() {
 
         var middle = document.getElementById("catal2");
@@ -36,7 +37,7 @@
 
         // 분류 돌리기 위해서 나옴 위 : 버튼이름, 아래 : funtion()
         var man_clothes_array = ['모자', '상의', '하의', '신발'];
-        var man_clothes_detail_array = ['hat', 'shirt', 'pants', 'shoes'];
+        var man_clothes_detail_array = ['mhat', 'mshirt', 'mpants', 'mshoes'];
 
         // 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4. 콘텐츠 간의 구분
         middle.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue tab_focus_darkblue mouse_visited_darkblue\" >" +
@@ -51,7 +52,7 @@
 
     }
 
-    function hat() {
+    function mhat() {
         var right = document.getElementById("catal3");
         right.innerHTML = '';
 
@@ -63,27 +64,47 @@
         right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue\">서비스 준비 중 입니다.</button>";
     }
 
-    function shirt() {
+    function mshirt() {
         var right = document.getElementById("catal3");
         right.innerHTML = '';
 
-        var shirt_array = ['반팔 티셔츠', '남방', '가디건', '티셔츠'];
-        var shirt_detail_array = ['short_shirt', 'nambang', 'cardigan', 't_shirt'];
+        var mshirt_array = ['티셔츠','반팔 티셔츠',  '긴팔 티셔츠','남방', '가디건', '코트'];
+        var mshirt_detail_array = [ 't_shirt', 'short_shirt', 'long_shirt','nambang', 'cardigan', 'coat'];
+
 
         // 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4. 콘텐츠 간의 구분
         right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue tab_focus_darkblue mouse_visited_darkblue\" >" +
             "<font size=\"5em\" color=\"white\" tabindex=\"-1\">소분류</font>";
 
-        for (var i = 0; i < shirt_array.length; i++) {
-            right.innerHTML += "<button onclick = \"" + shirt_detail_array[i] +
+        for (var i = 0; i < mshirt_array.length; i++) {
+            right.innerHTML += "<button onclick = \"" + mshirt_detail_array[i] +
                 "()\" class=\"btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue\">" +
-                shirt_array[i] + "</button>";
+                mshirt_array[i] + "</button>";
             var right = document.getElementById("catal3");
         }
 
     }
 
-    function pants() {
+    function mpants() {
+        var right = document.getElementById("catal3");
+        right.innerHTML = '';
+
+        var mpants_array = [ '반바지', '긴바지', '트레이닝복'];
+        var mpants_detail_array = ['short_pants', 'long_pants', 'training_pants','Leggings','skirt'];
+
+        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue tab_focus_darkblue mouse_visited_darkblue\" >" +
+            "<font size=\"5em\" color=\"white\" tabindex=\"-1\">소분류</font>";
+
+        for (var i = 0; i < mpants_array.length; i++) {
+            right.innerHTML += "<button onclick = \"" + mpants_detail_array[i] +
+                "()\" class=\"btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue\">" +
+                mpants_array[i] + "</button>";
+            var right = document.getElementById("catal3");
+        }
+    }
+
+   
+    function mshoes() {
         var right = document.getElementById("catal3");
         right.innerHTML = '';
 
@@ -95,18 +116,94 @@
         right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue\">서비스 준비 중 입니다.</button>";
     }
 
-    function shoes() {
-        var right = document.getElementById("catal3");
-        right.innerHTML = '';
+     //여성
+     function woman_clothes() {
+
+        var middle = document.getElementById("catal2");
+        middle.innerHTML = '';
+
+        // 분류 돌리기 위해서 나옴 위 : 버튼이름, 아래 : funtion()
+        var woman_clothes_array = ['모자', '상의', '하의', '신발'];
+        var woman_clothes_detail_array = ['what', 'wshirt', 'wpants', 'wshoes'];
 
         // 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4. 콘텐츠 간의 구분
-        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue tab_focus_darkblue mouse_visited_darkblue\" >" +
-            "<font size=\"5em\" color=\"white\" tabindex=\"-1\">소분류</font>";
+        middle.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue tab_focus_darkblue mouse_visited_darkblue\" >" +
+            "<font size=\"5em\" color=\"white\" tabindex=\"-1\" >중분류</font>";
 
-        // 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4. 콘텐츠 간의 구분
-        right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue\">서비스 준비 중 입니다.</button>";
-    }
+        for (var i = 0; i < woman_clothes_array.length; i++) {
+            middle.innerHTML += "<button onclick = \"" + woman_clothes_detail_array[i] +
+                // 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4. 콘텐츠 간의 구분
+                "()\" class=\"btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue\">" + woman_clothes_array[i] + "</button>";
+            var middle = document.getElementById("catal2");
+        }
 
+        }
+
+        function what() {
+            var right = document.getElementById("catal3");
+            right.innerHTML = '';
+
+            // 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4. 콘텐츠 간의 구분
+            right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue tab_focus_darkblue mouse_visited_darkblue\" >" +
+                "<font size=\"5em\" color=\"white\" tabindex=\"-1\">소분류</font>";
+
+            // 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4. 콘텐츠 간의 구분
+            right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue\">서비스 준비 중 입니다.</button>";
+        }
+
+        function wshirt() {
+            var right = document.getElementById("catal3");
+            right.innerHTML = '';
+
+            var wshirt_array = ['티셔츠','반팔 티셔츠',  '긴팔 티셔츠','남방', '가디건', '코트', '원피스'];
+            var wshirt_detail_array = [ 't_shirt', 'short_shirt', 'long_shirt','nambang', 'cardigan', 'coat', 'one_peace'];
+
+
+            // 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4. 콘텐츠 간의 구분
+            right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue tab_focus_darkblue mouse_visited_darkblue\" >" +
+                "<font size=\"5em\" color=\"white\" tabindex=\"-1\">소분류</font>";
+
+            for (var i = 0; i < wshirt_array.length; i++) {
+                right.innerHTML += "<button onclick = \"" + wshirt_detail_array[i] +
+                    "()\" class=\"btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue\">" +
+                    wshirt_array[i] + "</button>";
+                var right = document.getElementById("catal3");
+            }
+
+        }
+
+        function wpants() {
+            var right = document.getElementById("catal3");
+            right.innerHTML = '';
+
+            var wpants_array = [ '반바지', '긴바지', '트레이닝복', '레깅스', '치마'];
+            var wpants_detail_array = ['short_pants', 'long_pants', 'training_pants'];
+
+            right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue tab_focus_darkblue mouse_visited_darkblue\" >" +
+                "<font size=\"5em\" color=\"white\" tabindex=\"-1\">소분류</font>";
+
+            for (var i = 0; i < wpants_array.length; i++) {
+                right.innerHTML += "<button onclick = \"" + wpants_detail_array[i] +
+                    "()\" class=\"btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue\">" +
+                    wpants_array[i] + "</button>";
+                var right = document.getElementById("catal3");
+            }
+        }
+
+
+        function wshoes() {
+            var right = document.getElementById("catal3");
+            right.innerHTML = '';
+
+            // 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4. 콘텐츠 간의 구분
+            right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue tab_focus_darkblue mouse_visited_darkblue\" >" +
+                "<font size=\"5em\" color=\"white\" tabindex=\"-1\">소분류</font>";
+
+            // 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4. 콘텐츠 간의 구분
+            right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue\">서비스 준비 중 입니다.</button>";
+        }
+
+    //공통
     function sorry() {
         var right = document.getElementById("catal2");
         right.innerHTML = '';
@@ -153,8 +250,8 @@
             </font>
             <!-- 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4. 콘텐츠 간의 구분 -->
         </button>
-        <button type="button" class="btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue" onclick="man_clothes()">남성의류</button>
-        <button type="button" class="btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue" onclick="sorry()">여성의류</button>
+        <button type="button" class="btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue" id="man" onclick="man_clothes()" >남성의류</button>
+        <button type="button" class="btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue" id="woman" onclick="woman_clothes()" >여성의류</button>
         <button type="button" class="btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue" onclick="sorry()">생필품</button>
         <button type="button" class="btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue" onclick="sorry()">전자 기기</button>
         <button type="button" class="btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue" onclick="sorry()">식품</button>
@@ -163,7 +260,7 @@
 
     <div id="catal2" class="btn-group-vertical catal" role="group" aria-label="Button group with nested dropdown">
         <!-- 5.3.4. 콘텐츠 간의 구분 -->
-        <button onclick="shirt()" class="btn btn-secondary ctrl_hsl_blue">대 분류를 먼저 선택해주세요.</button>
+        <button onclick="mshirt()" class="btn btn-secondary ctrl_hsl_blue">대 분류를 먼저 선택해주세요.</button>
     </div>
     <!-- 5.3.4. 콘텐츠 간의 구분 -->
     <div id="catal3" class="btn-group-vertical catal ctrl_hsl_blue" role="group"
