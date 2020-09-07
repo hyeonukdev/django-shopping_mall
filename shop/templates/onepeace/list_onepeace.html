@@ -54,15 +54,14 @@
   <div id="jb-content">
     <div style="margin-bottom: 30px;">
       <font size="5em" color="black" tabindex="0">
-        {{categories.values.get.meta_description}} / {{categories.values.get.slug}} <br>
+          {{categories.values.get.meta_description}} / {{categories.values.get.slug}} <br>
       </font>
     </div>
 
 
     <div class="row">
       {% for product in products %}
-
-      {% if '반팔티' in product.name %}
+      {% if '원피스' in product.name %}
       <div class="col-6">
         <div class="card">
           <div class="card_thumb">

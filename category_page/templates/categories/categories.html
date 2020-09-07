@@ -68,8 +68,8 @@
         var right = document.getElementById("catal3");
         right.innerHTML = '';
 
-        var mshirt_array = ['티셔츠','반팔 티셔츠',  '긴팔 티셔츠','남방', '가디건', '코트'];
-        var mshirt_detail_array = [ 't_shirt', 'short_shirt', 'long_shirt','nambang', 'cardigan', 'coat'];
+        var mshirt_array = ['반팔 티셔츠',  '긴팔 티셔츠','남방', '가디건', '코트'];
+        var mshirt_detail_array = [ 'short_shirt', 'long_shirt','nambang', 'cardigan', 'coat'];
 
 
         // 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4. 콘텐츠 간의 구분
@@ -155,8 +155,8 @@
             var right = document.getElementById("catal3");
             right.innerHTML = '';
 
-            var wshirt_array = ['티셔츠','반팔 티셔츠',  '긴팔 티셔츠','남방', '가디건', '코트', '원피스'];
-            var wshirt_detail_array = [ 't_shirt', 'short_shirt', 'long_shirt','nambang', 'cardigan', 'coat', 'one_peace'];
+            var wshirt_array = ['반팔 티셔츠',  '긴팔 티셔츠','남방', '가디건', '코트', '원피스'];
+            var wshirt_detail_array = [ 'short_shirt', 'long_shirt','nambang', 'cardigan', 'coat', 'one_peace'];
 
 
             // 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4. 콘텐츠 간의 구분
@@ -217,21 +217,34 @@
     }
 
     function short_shirt() {
-        // url 같은거
-        location.href = "{% url 'shop:product_all' %}";
+        location.href = "{% url 'shop:product_short_shirts' %}";
     }
 
-    function nambang() {
-        // url 같은거
+    function one_peace() {
+        location.href = "{% url 'shop:product_onepeace' %}";
+    }
+
+    function long_shirt() {
+
+        location.href = "{% url 'shop:product_long_shirts' %}";
     }
 
     function cardigan() {
-        // url 같은거
+
     }
 
-    function t_shirt() {
-        // url 같은거
+    function coat() {
+        location.href = "{% url 'shop:product_coats' %}";
     }
+
+    function short_pants() {
+        location.href = "{% url 'shop:product_short_pants' %}";
+    }
+
+    function long_pants() {
+        location.href = "{% url 'shop:product_long_pants' %}";
+    }
+
 </script>
 {% endblock %}
 
