@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+<!-- 6.4.2. 제목 제공 -->
+{% block title %}상품 물품 페이지{% endblock %}
+{% block home_style %}
+<style>
+  #jb-container {
+    width: auto;
+    height: auto;
+    margin: 0px auto;
+    padding: 0px;
+    border: 1px solid #bcbcbc;
+  }
+
+  #jb-header {
+    padding: 20px;
+    margin-bottom: 0px;
+    border: 1px solid #bcbcbc;
+  }
+
+  #jb-content {
+    width: 100%;
+    padding: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border: 1px solid #bcbcbc;
+  }
+
+  #jb-footer {
+    clear: both;
+    padding: 15px;
+    border: 1px solid #bcbcbc;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .card_thumb {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+
+  }
+
+  .card_img {
+    width: 100%;
+    height: 100%;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="jb-container">
+  <div id="jb-content">
+    <div style="margin-bottom: 30px;">
+      <font size="5em" color="black" tabindex="0">
+        {{categories.values.get.meta_description}} / {{categories.values.get.slug}} <br>
+      </font>
+    </div>
+
+
+    <div class="row">
+      {% for product in products %}
+
+      {% if '남성반팔티' in product.name %}
+      <div class="col-6">
+        <div class="card">
+          <div class="card_thumb">
+            <!-- 6.4.3. 적절한 링크 텍스트 -->
+            <a title="{{product.name}} 상품 상세 페이지로 이동" href="{{product.get_absolute_url}}" tabindex="-1">
+              <img class="card-img-top card_img" src="{{product.image.url}}" tabindex="0" alt="Product Image">
+            </a>
+          </div>
+          <div class=" card-body">
+            <span>
+              <h5 class="card-title" tabindex="0">{{product.name}}</h5>
+            </span>
+            <span class="badge badge-secondary" tabindex="0">{{product.price}}원</span>
+          </div>
+        </div>
+        <br>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

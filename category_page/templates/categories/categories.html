@@ -69,7 +69,7 @@
         right.innerHTML = '';
 
         var mshirt_array = ['반팔 티셔츠',  '긴팔 티셔츠','남방', '가디건', '코트'];
-        var mshirt_detail_array = [ 'short_shirt', 'long_shirt','nambang', 'cardigan', 'coat'];
+        var mshirt_detail_array = [ 'mshort_shirt', 'mlong_shirt','nambang', 'cardigan', 'mcoat'];
 
 
         // 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4. 콘텐츠 간의 구분
@@ -90,7 +90,7 @@
         right.innerHTML = '';
 
         var mpants_array = [ '반바지', '긴바지', '트레이닝복'];
-        var mpants_detail_array = ['short_pants', 'long_pants', 'training_pants','Leggings','skirt'];
+        var mpants_detail_array = ['mshort_pants', 'mlong_pants', 'training_pants','Leggings','skirt'];
 
         right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue tab_focus_darkblue mouse_visited_darkblue\" >" +
             "<font size=\"5em\" color=\"white\" tabindex=\"-1\">소분류</font>";
@@ -156,7 +156,7 @@
             right.innerHTML = '';
 
             var wshirt_array = ['반팔 티셔츠',  '긴팔 티셔츠','남방', '가디건', '코트', '원피스'];
-            var wshirt_detail_array = [ 'short_shirt', 'long_shirt','nambang', 'cardigan', 'coat', 'one_peace'];
+            var wshirt_detail_array = [ 'wshort_shirt', 'wlong_shirt','nambang', 'cardigan', 'wcoat', 'one_peace'];
 
 
             // 5.3.3 텍스트 콘텐츠의 명도 대비, 5.3.4. 콘텐츠 간의 구분
@@ -177,7 +177,7 @@
             right.innerHTML = '';
 
             var wpants_array = [ '반바지', '긴바지', '트레이닝복', '레깅스', '치마'];
-            var wpants_detail_array = ['short_pants', 'long_pants', 'training_pants'];
+            var wpants_detail_array = ['wshort_pants', 'wlong_pants', 'training_pants', 'leggings', 'skirts'];
 
             right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_blue tab_focus_darkblue mouse_visited_darkblue\" >" +
                 "<font size=\"5em\" color=\"white\" tabindex=\"-1\">소분류</font>";
@@ -216,33 +216,54 @@
         right.innerHTML += "<button class=\"btn btn-secondary ctrl_hsl_gray tab_focus_darkblue mouse_visited_darkblue\" >서비스 준비 중 입니다.</button>";
     }
 
-    function short_shirt() {
-        location.href = "{% url 'shop:product_short_shirts' %}";
+    function mshort_shirt() {
+        location.href = "{% url 'shop:product_short_mshirts' %}";
+    }
+
+    function wshort_shirt() {
+        location.href = "{% url 'shop:product_short_wshirts' %}";
     }
 
     function one_peace() {
         location.href = "{% url 'shop:product_onepeace' %}";
     }
 
-    function long_shirt() {
+    function mlong_shirt() {
 
-        location.href = "{% url 'shop:product_long_shirts' %}";
+        location.href = "{% url 'shop:product_long_mshirts' %}";
     }
+
+    function wlong_shirt() {
+        location.href = "{% url 'shop:product_long_wshirts' %}";
+    }
+
 
     function cardigan() {
 
     }
 
-    function coat() {
-        location.href = "{% url 'shop:product_coats' %}";
+    function wcoat() {
+        location.href = "{% url 'shop:product_wcoats' %}";
     }
 
-    function short_pants() {
-        location.href = "{% url 'shop:product_short_pants' %}";
+    function mcoat() {
+        location.href = "{% url 'shop:product_mcoats' %}";
     }
 
-    function long_pants() {
-        location.href = "{% url 'shop:product_long_pants' %}";
+    function mshort_pants() {
+        location.href = "{% url 'shop:product_short_mpants' %}";
+    }
+
+    function mlong_pants() {
+        location.href = "{% url 'shop:product_long_mpants' %}";
+    }
+
+    function wshort_pants() {
+        location.href = "{% url 'shop:product_short_wpants' %}";
+    }
+
+    function wlong_pants() {
+        location.href = "{% url 'shop:product_long_wpants' %}";
     }
 
 </script>
