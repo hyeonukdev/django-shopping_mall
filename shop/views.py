@@ -158,7 +158,7 @@ def long_pants_product_in_category(request, category_slug=None):
 #coat
 def coats_product_in_category(request, category_slug=None):
     current_category = None
-    categories = Category.objects.filter(name='남성반바지')
+    categories = Category.objects.filter(name='여성코트')
     products = Product.objects.filter(available_display=True)
 
     if category_slug:
