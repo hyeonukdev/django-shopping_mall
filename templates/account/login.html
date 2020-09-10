@@ -252,24 +252,25 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form p-l-55 p-r-55 p-t-178">
+				<form class="login100-form p-l-55 p-r-55 p-t-178 login" method="POST" action="/accounts/login/"> {% csrf_token %} 
 					<span class="login100-form-title">
 						시각장애인 쇼핑몰
-					</span>
+                    </span>
 
-					<div for ="id_login" class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+                    <div for ="id_login" class="wrap-input100 validate-input m-b-16">
 						<input class="input100" type="text" required id="id_login" name="login" placeholder="아이디">
 						<span class="focus-input100"></span>
 					</div>
 
-					<div for ="id_password" class="wrap-input100 validate-input" data-validate = "Please enter password">
-						<input class="input100" type="password" required id ="id_password" name="pass" placeholder="비밀번호">
+					<div for ="id_password" class="wrap-input100 validate-input" >
+						<input class="input100" type="password" required id ="id_password" name="password" placeholder="비밀번호">
 						<span class="focus-input100"></span>
 					</div>
 
                     <div class="container-login100-form-btn p-t-23">
 						<button class="login100-form-btn primaryAction" type="submit">로그인</button>
                     </div>
+
 
                     <div class="log_btn_padding">
                         <button onclick="location.href='/accounts/naver/login/?process=login'" class="log_btn" type="button" class="btm_image" id="img_btn" title="네이버 로그인"><img src="https://clova-phinf.pstatic.net/MjAxODAzMjlfOTIg/MDAxNTIyMjg3MzM3OTAy.WkiZikYhauL1hnpLWmCUBJvKjr6xnkmzP99rZPFXVwgg.mNH66A47eL0Mf8G34mPlwBFKP0nZBf2ZJn5D4Rvs8Vwg.PNG/image.png"></button>
