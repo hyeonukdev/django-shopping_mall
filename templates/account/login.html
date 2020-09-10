@@ -258,7 +258,7 @@
 					</span>
 
 					<div for ="id_login" class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
-						<input class="input100" type="text" required id="id_login" name="username" placeholder="아이디">
+						<input class="input100" type="text" required id="id_login" name="login" placeholder="아이디">
 						<span class="focus-input100"></span>
 					</div>
 
@@ -272,8 +272,8 @@
                     </div>
 
                     <div class="log_btn_padding">
-                        <button href="{%provider_login_url 'naver'%}" class="log_btn" type="button" class="btm_image" id="img_btn" title="네이버 로그인"><img src="https://clova-phinf.pstatic.net/MjAxODAzMjlfOTIg/MDAxNTIyMjg3MzM3OTAy.WkiZikYhauL1hnpLWmCUBJvKjr6xnkmzP99rZPFXVwgg.mNH66A47eL0Mf8G34mPlwBFKP0nZBf2ZJn5D4Rvs8Vwg.PNG/image.png"></button>
-                        <button href="{%provider_login_url 'google'%}" class="log_btn" type="button" class="btm_image" id="img_btn" title="구글 로그인"><img src="https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png"></button>
+                        <button onclick="location.href='/accounts/naver/login/?process=login'" class="log_btn" type="button" class="btm_image" id="img_btn" title="네이버 로그인"><img src="https://clova-phinf.pstatic.net/MjAxODAzMjlfOTIg/MDAxNTIyMjg3MzM3OTAy.WkiZikYhauL1hnpLWmCUBJvKjr6xnkmzP99rZPFXVwgg.mNH66A47eL0Mf8G34mPlwBFKP0nZBf2ZJn5D4Rvs8Vwg.PNG/image.png"></button>
+                        <button onclick="location.href='/accounts/google/login/?process=login'" class="log_btn" type="button" class="btm_image" id="img_btn" title="구글 로그인"><img src="https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png"></button>
                     </div>
 
                     <div class="container-login100-form-btn p-b-23">
