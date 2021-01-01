@@ -9,7 +9,7 @@
 
 ### 적용기술
 Framwork: Django <br>
-Language : Python/HTML/JS/CSS<br><br>
+Language : Python/HTML/JS/CSS<br>
 Server : Apache/AWS/Docker<br>
 Code : Git<br>
 
