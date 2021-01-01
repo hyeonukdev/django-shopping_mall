@@ -8,10 +8,10 @@
 - 2020.03.02.~06.22. (약4개월)
 
 ### 적용기술
-Framwork: Django
-Language : Python/HTML/JS/CSS
-Server : Apache/AWS/Docker
-Code : Git
+Framwork: Django <br>
+Language : Python/HTML/JS/CSS<br><br>
+Server : Apache/AWS/Docker<br>
+Code : Git<br>
 
 ### 상세 내용
 - 쇼핑몰 서버 구축
