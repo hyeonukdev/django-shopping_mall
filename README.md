@@ -35,3 +35,10 @@ Code : Git<br>
   - Django ORM
   - Query Set
 ---
+
+## 실행방법
+1. clone django project
+2. 프로젝트 경로에서 $ python -m venv <가상환경이름>
+3. 가상환경 실행 $ source <가상환경>/scripts/activate (mac은 scripts->bin)
+4. pip 설치 $ pip install -r requirements.txt 
+5. 서버 실행 $ python manage.py runserver
