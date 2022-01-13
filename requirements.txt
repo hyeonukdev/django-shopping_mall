@@ -3,4 +3,4 @@ django-allauth==0.41.0
 PyMySQL==0.9.3
 gunicorn==20.0.4
 whitenoise==5.1.0
-Pillow==7.1.2
+Pillow==9.0.0
